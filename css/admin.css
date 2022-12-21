@@ -1,0 +1,12 @@
+.editor-styles-wrapper .is-root-container .wp-block {
+  max-width: 100%!important;
+  width: 100%!important;
+}
+.edit-post-visual-editor__content-area .editor-styles-wrapper .is-root-container .wp-block.medium-width {
+  max-width: 840px!important;
+  width: 100%!important;
+}
+.editor-styles-wrapper .is-root-container .wp-block.wrapper {
+  max-width: 900px!important;
+  width: 100%!important;
+}
