@@ -1558,7 +1558,8 @@ body.home #content #intro{margin-top:-70px}
 #site-navigation ul.menu li.current-menu-item>a:before{width:7px;height:100%}
 #site-navigation ul.menu li.homelink a{font-size:2em;line-height:1;padding:10px 20px}
 #menu-toggle{display:block}
-body.mobile-menu-open.logged-in.admin-bar .site-header{top:50px}
+html body.logged-in.admin-bar .site-header{top:46px}
+html body.logged-in.admin-bar #wpadminbar{position:fixed !important;top:0;left:0}
 #main,.titlediv.wrapper{max-width:100%;width:100%}
 .row1 .wrapper{padding-left:0;padding-right:0}
 .approach .wp-block-cover .wp-block-cover__inner-container{position:relative}

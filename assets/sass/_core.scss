@@ -342,9 +342,14 @@ body.mobile-menu-open {
     right: 0;
     z-index: 9999;
   }
-  &.logged-in.admin-bar {
-    @include max($midwidth) {
-      .site-header {top:50px;}
+}
+html  body.logged-in.admin-bar {
+  @include max($midwidth) {
+    .site-header {top:46px;}
+    #wpadminbar {
+      position: fixed!important;
+      top: 0;
+      left: 0;
     }
   }
 }
