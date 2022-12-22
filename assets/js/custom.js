@@ -6,6 +6,29 @@
  *  Date Modified: 09.23.2021
  */
 jQuery(document).ready(function ($) {
+  /* MENU TOGGLE */
+  $('#menu-toggle').on('click', function (e) {
+    e.preventDefault();
+    $(this).toggleClass('open');
+    $('body').toggleClass('mobile-menu-open');
+  });
+  mobileHomeLink();
+  $(window).on('orientationchange resize', function () {
+    mobileHomeLink();
+  });
+
+  function mobileHomeLink() {
+    if ($(window).width() < 961) {
+      if ($('#site-navigation ul.menu li.homelink').length == 0) {
+        $('#site-navigation ul.menu').prepend('<li class="homelink"><a href="' + siteURL + '" aria-label="Homepage"><i class="fa fa-home" aria-hidden="true"></i></a></li>');
+      }
+    } else {
+      if ($('#site-navigation ul.menu li.homelink').length) {
+        $('#site-navigation ul.menu li.homelink').remove();
+      }
+    }
+  }
+
   new WOW().init();
   $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function (event) {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {

@@ -1,59 +1,59 @@
 	</div><!-- #content -->
-	
 	<?php  
 	$footer_logo = get_field("footer_logo","option");
-	$footer_links = get_field("footer_links","option");
-  $footer_other_logos = get_field("footer_other_logos","option");
-  $other_logos = array();
-  if($footer_other_logos) {
-    foreach($footer_other_logos as $e) {
-      if($e['logo']) {
-        $other_logos[] = $e;
-      }
-    }
-  }
-	$social_media = get_social_media();
+  $footer_widget = get_field("footer_widget","option");
+  $footer_partners = get_field("footer_partners","option");
 	?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrapper">
 			<div class="flexwrap">
-				<?php if ($footer_logo || $other_logos) { ?>
-					<div class="footer-logo">
+				<?php if ($footer_logo) { ?>
+					<div id="footer-logo" class="flexcol left">
             <?php if ($footer_logo) { ?>
               <img src="<?php echo $footer_logo['url'] ?>" alt="<?php echo $footer_logo['title'] ?>">
             <?php } ?>
-						
-            <?php if ($other_logos) { ?>
-            <div class="other-logos">
-              <?php foreach ($other_logos as $r) { 
-                $openLink = '';
-                $closeLink = '';
-                if($r['url']) {
-                  $openLink = '<a href="'.$r['url'].'">';
-                  $closeLink = '</a>';
-                }
+					</div>
+				<?php } ?>
+
+        <?php if ($footer_widget) { $widgetCount = count($footer_widget); ?>
+          <div id="footer-widgets" class="flexcol right widget-<?php echo $widgetCount ?>">
+            <?php foreach ($footer_widget as $w) { ?>
+              <?php if ($w['content']) { ?>
+              <div class="widget"><?php echo $w['content'] ?></div>
+              <?php } ?>
+            <?php } ?>
+          </div>
+        <?php } ?>
+			</div>
+
+      <div class="bottom">
+        <div class="bcol">
+
+          <?php if ($footer_partners) { ?>
+            <div id="footer-partners" class="footer-partners">
+              <?php foreach ($footer_partners as $p) { 
+                $p_logo = $p['logo'];
+                $p_link = $p['website'];
                 ?>
-                <div><?php echo $openLink; ?><img src="<?php echo $r['logo']['url'] ?>" alt="<?php echo $r['logo']['title'] ?>"><?php echo $closeLink; ?></div>
+                <?php if ($p_logo) { ?>
+
+                  <?php if ($p_link) { ?>
+                  <a href="<?php echo $p_link ?>" target="_blank"><img src="<?php echo $p_logo['url'] ?>" alt="<?php echo $p_logo['title'] ?>"></a>  
+                  <?php } else { ?>
+                  <img src="<?php echo $p_logo['url'] ?>" alt="<?php echo $p_logo['title'] ?>">
+                  <?php } ?>
+
+                <?php } ?>
               <?php } ?>
             </div>
-            <?php } ?>
-					</div>
-				<?php } ?>
+          <?php } ?>
 
-				<?php if (has_nav_menu('footer')) { ?>
-				<div class="footer-links">
-					<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu','link_before'=>'<span>','link_after'=>'</span>','container'=>false) ); ?>
-				</div>	
-				<?php } ?>
-
-				<?php if ($social_media) { ?>
-					<div class="social-media">
-					<?php foreach ($social_media as $s) { ?>
-						<a href="<?php echo $s['url'] ?>" class="<?php echo $s['type'] ?> link" target="_blank"><i class="<?php echo $s['icon'] ?>"></i></a>
-					<?php } ?>
-					</div>
-				<?php } ?>
-			</div>
+          <div class="copyright">
+            &copy; <?php echo date('Y') ?> <?php echo get_bloginfo('name') ?>
+          </div>
+          
+        </div>
+      </div>
 		</div>
 	</footer><!-- #colophon -->
 	

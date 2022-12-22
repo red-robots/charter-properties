@@ -33,10 +33,22 @@ body {
 	font-weight: 300;
 	line-height: 1.5;
 	color: #000;
+  @include max($midwidth) {
+    padding-top: 80px;
+  }
+}
+.h1, h1 {
+  font-size: 2rem;
+  @include tab {
+    font-size: 2.8rem;
+  }
 }
 .h2, h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 500;
+  @include tab {
+    font-size: 2.5rem;
+  }
 }
 section, div {
 	&:focus {
@@ -89,14 +101,25 @@ a {
 		z-index: 100000; /* Above WP toolbar. */
 	}
 }
+.site {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.flexwrap {
+  @include flexgroup();
+}
 .wrapper {
-	max-width: 85%;
+	max-width: 90%;
 	width: 100%;
 	margin: 0 auto;
 	padding-left: 20px;
 	padding-right: 20px;
 	position: relative;
 	z-index: 10;
+  @include xs {
+    max-width: 85%;
+  }
 	&.narrow {
 		max-width: 900px;
 	}
@@ -122,6 +145,21 @@ a {
       display: block;
       width: 100%;
       height: auto;
+    }
+  }
+  @include max($midwidth) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 100;
+    background: #FFF;
+    .site-logo {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 145px;
     }
   }
 }
@@ -175,24 +213,151 @@ body.home {
       left: 0;
     }
   }
+
+
+  @include max($midwidth) {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    max-width: 350px;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    padding: 20px 0 0;
+    transition: all ease .3s;
+    z-index: -999;
+    ul.menu>li {
+      width: 100%;
+    }
+    ul.menu>li>a {
+      padding: 10px 25px;
+    }
+    ul.menu li.current-menu-item > a {
+      &:before {
+        width: 7px;
+        height: 100%;
+      }
+    }
+    ul.menu li.homelink {
+      a {
+        font-size: 2em;
+        line-height: 1;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+
+#menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  z-index: 99999;
+  background: transparent;
+  cursor: pointer;
+  transition: all ease .3s;
+  @include max($midwidth) {
+    display: block;
+  }
+  span.bar,
+  span.bar:before,
+  span.bar:after {
+    display: block;
+    height: 3px;
+    border-radius: 30px;
+    background: #000;
+    transition: all ease .3s;
+    position: absolute;
+    left: 0;
+  }
+  span.bar {
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  span.bar:before,
+  span.bar:after {
+    content:"";
+    width: 100%;
+  }
+  span.bar:before {
+    top: -8px;
+  }
+  span.bar:after {
+    top: 8px;
+  }
+  &.open {
+    span.bar {
+      background-color: transparent;
+      transform: translateX(-16px) rotate(45deg);
+    }
+    span.bar:before {
+      transform: translateY(8px) rotate(0);
+    }
+    span.bar:after {
+      transform: translateY(-7px) rotate(-90deg);
+    }
+  }
+
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  z-index: 99999;
+}
+
+body.mobile-menu-open {
+  #overlay {display:block;}
+  .site-header {
+    z-index: 999999;
+    .head-inner {
+      &:before {
+        content:"";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.5);
+        z-index: 999;
+      }
+    }
+    // .site-logo {
+    //   left: 52px;
+    //   z-index: 9999999;
+    // }
+  }
+  #site-navigation {
+    right: 0;
+    z-index: 9999;
+  }
 }
 
 .banner-wrapper {
   position: relative;
-  z-index: 20px;
-  // &:after {
-  //   content:"";
-  //   display: block;
-  //   width: 100%;
-  //   height: 10vh;
-  //   background: $primary;
-  //   position: absolute;
-  //   left: 0;
-  //   bottom: 0;
-  //}
-
+  z-index: 20;
+  .wrapper {
+    max-width: 100%;
+    @include tab {
+      max-width: 90%;
+    }
+    @include mid {
+      max-width: 85%;
+    }
+  }
   .banner {
-    height: 100%;
+    height: 82vh;
     position: relative;
     @include tab {
       height: 80vh;
@@ -201,6 +366,7 @@ body.home {
       height: 100%;
       position: relative;
       z-index: 10;
+
     }
     .slide  {
       background-color: #CCC;
@@ -222,16 +388,31 @@ body.home {
       align-items: center;
       background: rgba(0,0,0,.6);
       text-align: center;
+      padding: 20px;
+      @include tab {
+        padding: 0 0;
+      }
       .text {
-        font-size: 7vh;
+        font-size: 3.5vh;
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase;
         color: #FFF;
         max-width: 750px;
         width: 100%;
+        @include tab {
+          font-size: 7vh;
+        }
       }
     }
+  }
+}
+
+#main,
+.titlediv.wrapper {
+  @include max($midwidth) {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -283,12 +464,22 @@ body.home {
   }
 }
 
+.row1 {
+  @include max($midwidth) {
+    .wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 .intro {
   padding-top: 170px;
   padding-bottom: 70px;
   h2 {
     font-weight: 600;
   }
+  
 }
 
 .scrolldown {
@@ -403,7 +594,10 @@ body.home {
       }
     }
     div.button {
-      margin-top: -45px;
+      margin-top: 0;
+      @include tab {
+        margin-top: -45px;
+      }
       a {
         display: inline-block;
         text-decoration: none;
@@ -424,38 +618,58 @@ body.home {
   position: relative;
   z-index: 30;
   background: #FFF;
-  padding: 20px;
-  .wp-block-group__inner-container {
+  img.wp-block-cover__image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .wp-block-cover {
     position: relative;
     top: -80px;
+  }
+  .wp-block-group__inner-container {
+    // position: relative;
+    // top: -80px;
   }
   .wp-block-cover {
     position: relative;
     padding: 0 0;
     .wp-block-cover__inner-container {
-      position: relative;
+      position: absolute;
+      left: 0;
+      bottom: 0;
       overflow: hidden;
+      @include max($midwidth) {
+        position: relative;
+      }
     }
   }
+  p:empty{display:none;}
   h2 {
     position: absolute;
-    top: 5%;
+    top: 10%;
     left: 0;
     width: 100%;
     text-align: center;
   }
 }
-
+.home--approach {
+  position: relative;
+  top: 0;
+}
 .home--tabs {
   width: 30%;
   position: relative;
-  top: 70px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 10vw;
   z-index: 15;
+  @include max($midwidth) {
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
   .tabTitle {
     width: 100%;
     a.wrap {
@@ -482,23 +696,32 @@ body.home {
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    padding: 20px 0;
+    padding: 8px 0;
+    @include tab {
+      padding: 20px 0;
+    }
     img {
       width: auto;
-      height: 50px;
+      height: 35px;
       margin-right: 20px;
+      @include tab {
+        height: 50px;
+      }
     }
     .t1 {
-      font-size: 1.5em;
+      font-size: 1.1em;
       font-weight: 600;
       line-height: 1.2;
       color: #FFF;
+      @include tab {
+        font-size: 1.5em;
+      }
     }
   }
 }
 .home-tabs-content {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   width: 50%;
   height: 100%;
@@ -509,7 +732,7 @@ body.home {
     &.active {
       display: block;
       position: absolute;
-      bottom: -30px;
+      bottom: 50px;
       right: 0;
       background: #FFF;
       padding: 15px;
@@ -519,6 +742,15 @@ body.home {
       line-height: 1.5;
       animation-duration: 0.3s;
       @include animateEffect('fadeInRight');
+    }
+  }
+
+  @include max($midwidth) {
+    width: 100%;
+    position: relative;
+    padding: 15px 15px 40px;
+    .tabText.active {
+      position: relative;
     }
   }
 }
@@ -606,10 +838,13 @@ body.home {
 .home-tabs-arrows {
   position: absolute;
   right: 0;
-  bottom: -80px;
+  bottom: 0;
   display: inline-block;
   height: 50px;
   z-index: 100;
+  @include max($tabwidth) {
+    width: 100%;
+  }
   a {
     display: inline-block;
     text-decoration: none;
@@ -663,6 +898,10 @@ body.home {
     &:after {
       transform: translateY(0) rotate(45deg);
     }
+    @include max($tabwidth) {
+      position: absolute;
+      right: 0;
+    }
   }
 }
 
@@ -684,6 +923,177 @@ body.home {
   }
   .wp-block-group__inner-container {
     font-weight: 400;
+  }
+}
+
+#main {
+  min-height: 30em;
+}
+
+
+/* FOOTER */
+.site-footer {
+  background: $gray2;
+  border-bottom: 5px solid $secondary;
+  .wrapper {
+    padding-top: 70px;
+    padding-bottom: 60px;
+  }
+  .flexcol {
+    width: 100%;
+    position: relative;
+    color: $primary;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+  .flexcol.left {
+    border-left: none;
+    width: 100%;
+    text-align: center;
+    @include tab {
+      text-align: left;
+      width: 350px;
+      padding-right: 5vw;
+      @include flexgroup();
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      width: 250px;
+      height: auto;
+    }
+  }
+  .flexcol.right {
+    @include flexgroup();
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #FFF;
+    @include tab {
+      width: calc(100% - 350px);
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 4vw;
+      margin-top: 0;
+      border-left: 1px solid #FFF;
+      border-top: none;
+    }
+  }
+  .email-icon {
+    color: #FFF!important;
+    i {font-size:20px;}
+  }
+  .widget, .widget a {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+  .widget {
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    @include tab {
+      width: 50%;
+      padding: 10px 20px;
+    }
+    @include mid {
+      width: 33.333%;
+      text-align: left;
+    }
+    a {
+      line-height: 1.3;
+    }
+    p:first-child {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    hr {
+      border-top: 1px solid #fff;
+      max-width: 100%;
+      width: 100%;
+      margin: 20px 0 20px;
+      display: block;
+      @include tab {
+        max-width: 250px;
+      }
+    }
+    a:hover i,
+    a:hover {
+      color: $secondary;
+    }
+    ul {
+      margin: 0 0;
+      padding: 0 0;
+      list-style: none;
+      li {
+        margin: 2px 0;
+      }
+    }
+  }
+
+  .bottom {
+    @include flexgroup();
+    text-align: center;
+    @include tab {
+      text-align: right;
+    }
+    .bcol {
+      width: 100%;
+      color: $primary;
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: normal;
+      letter-spacing: 1px;
+    }
+  }
+  .widget-1, .widget-2 {
+    width: 100%;
+  }
+  @include tab {
+    .widget {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .widget-1 .widget,
+    .widget-2 .widget,
+    .widget * {
+      font-size: 14px;
+    }
+
+    .widget-1 {
+      .widget, .widget * { font-size: 17px; }
+      .widget { width: 100%; }
+    }
+    .widget-2 {
+      .widget, .widget * { font-size: 17px; }
+      .widget { width: 50%; font-size: 17px; }
+    }
+  }
+
+  .copyright {
+    font-size: 13px;
+  }
+
+  .footer-partners {
+    margin-bottom: 10px;
+    a {
+      display: inline-block;
+      text-decoration: none;
+    }
+    img {
+      display: inline-block;
+      width: 33px;
+      height: auto;
+      @include tab {
+        margin-left: 8px;
+      }
+    }
   }
 }
 

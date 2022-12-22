@@ -657,6 +657,23 @@ function approach_shortcode_func( $atts ) {
   return $output;
 }
 
+add_shortcode( 'icon_email', 'icon_email_shortcode_func' );
+function icon_email_shortcode_func( $atts ) {
+  $a = shortcode_atts( array(
+    'value'=>''
+  ), $atts );
+  $emailadd = ($a['value']) ? $a['value'] : '';
+  $output = '';
+  if($emailadd) {
+    ob_start(); ?>
+    <a href="mailto:<?php echo antispambot($emailadd,1) ?>" aria-label="Email Address" class="email-icon"><i class="fa fa-envelope-o"></i></a>
+    <?php 
+    $output = ob_get_contents();
+    ob_end_clean();
+  }
+  return $output;
+}
+
 
 
 

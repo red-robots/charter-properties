@@ -29,12 +29,13 @@ $featImg = wp_get_attachment_image_src($thumbId,'full'); ?>
 <!-- end of SOCIAL MEDIA META TAGS -->
 <?php } ?>
 <script>
+var siteURL = '<?php echo get_site_url();?>';
 var currentURL = '<?php echo get_permalink();?>';
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
 </script>
 <?php wp_head(); ?>
 </head>
-<body <?php body_class($has_hero); ?>>
+<body <?php body_class(); ?>>
 <div id="page" class="site cf">
 	<div id="overlay"></div>
 	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
@@ -47,7 +48,7 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
           <h1 class="site-logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
         <?php } ?>
 
-        <span id="menu-toggle"><span class="sr">Menu</span><span class="bar"></span></span>
+        <span id="menu-toggle" class="menu-toggle"><span class="sr">Menu</span><span class="bar"></span></span>
         <nav id="site-navigation" class="main-navigation" role="navigation">
   				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu','link_before'=>'<span>','link_after'=>'</span>','container'=>false) ); ?>
   			</nav><!-- #site-navigation -->
