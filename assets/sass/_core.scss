@@ -1047,14 +1047,17 @@ body.home {
       justify-content: center;
       align-items: center;
       padding-top: 50px;
+      padding-left: 20px;
+      padding-right: 20px;
       @include tab {
         width: 60%;
         padding-top: 0;
+        padding-left: 5vw;
         padding-right: 5vw;
       }
       .large-text {
         font-family: $font_secondary;
-        font-size: 14vw;
+        font-size: 12vw;
         font-weight: 700;
         line-height: 1;
         color: $primary;
