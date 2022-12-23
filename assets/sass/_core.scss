@@ -1190,6 +1190,7 @@ body.home {
 
 .image-content {
   padding: 0 0!important;
+  position: relative;
   &:before {
     content:"";
     display: block;

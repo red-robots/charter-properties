@@ -1544,7 +1544,7 @@ body.home #content #intro{margin-top:-70px}
 .midwrapper.narrow{max-width:900px}
 .midwrapper.sm{max-width:800px}
 .midwrapper.wide{max-width:1350px}
-.image-content{padding:0 0 !important}
+.image-content{padding:0 0 !important;position:relative}
 .image-content:before{content:"";display:block;width:30%;height:100%;position:absolute;top:0;left:0;background:#fff}
 .image-content .wp-block-column{position:relative;z-index:10}
 .site-footer{font-family:"Josefin Sans",sans-serif;background:#cfd2d3;border-bottom:5px solid #bf7b2b}
