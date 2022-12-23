@@ -1041,6 +1041,8 @@ body.home {
   .inner {
     background: #CFD2D3;
     @include flexgroup();
+    justify-content: center;
+    align-items: center;
     .text {
       width: 100%;
       @include flexgroup();
