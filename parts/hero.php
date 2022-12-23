@@ -36,4 +36,17 @@
     </div>
   </div>
   <?php } ?>
+<?php } else { ?>
+
+  <?php if ( $banner = get_field('banner') ) { ?>
+  <div class="subpage-banner">
+    <div class="wrapper">
+      <div class="banner-text">
+        <h1 class="hero-title"><?php echo get_the_title(); ?></h1>
+      </div>
+      <img src="<?php echo $banner['url'] ?>" alt="<?php echo $banner['title'] ?>">
+    </div>
+  </div> 
+  <?php } ?>
+
 <?php } ?>

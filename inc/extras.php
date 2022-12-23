@@ -676,7 +676,60 @@ function icon_email_shortcode_func( $atts ) {
 
 
 
+add_shortcode( 'timeline', 'timeline_shortcode_func' );
+function timeline_shortcode_func( $atts ) {
+  // $a = shortcode_atts( array(
+  //   'value'=>''
+  // ), $atts );
+  //$emailadd = ($a['value']) ? $a['value'] : '';
+  $output = '';
+  ob_start(); 
+  if( $timeline = get_field('timeline') ) { ?>
+  <div class="timelineWrap">
+    <div class="timeline-swiper wrapper">
+      <div id="timeline" class="swiper">
+        <div class="swiper-wrapper">
+          <?php foreach ($timeline as $e) { 
+            $large = $e['year'];
+            $small = $e['text'];
+            $photo = $e['image'];
+            ?>
+            <div class="swiper-slide">
+              <div class="inner">
+                <div class="text">
+                  <div class="wrap">
+                    <?php if ($large) { ?>
+                     <div class="large-text"><?php echo $large ?></div> 
+                    <?php } ?>
+                    <?php if ($small) { ?>
+                     <div class="small-text"><?php echo $small ?></div> 
+                    <?php } ?>
+                  </div>
+                </div>
 
+                <?php if ($photo) { ?>
+                <figure class="photo">
+                  <img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>">
+                </figure>
+                <?php } ?>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
+    </div>
+    <?php if ( count($timeline)>1 ) { ?>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+    <?php } ?>
+  </div>
+  <?php } ?>
+  <?php 
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
+}
 
 
 

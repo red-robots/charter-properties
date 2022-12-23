@@ -152,4 +152,27 @@ jQuery(document).ready(function ($) {
       }
     });
   }
+  /* Timeline */
+
+
+  var swiper = new Swiper("#timeline", {
+    effect: 'slide',
+
+    /* "fade", "slide", "cube", "coverflow" or "flip" */
+    loop: true,
+    noSwiping: true,
+    simulateTouch: true,
+    speed: 1000,
+    autoplay: {
+      delay: 4000
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
 });

@@ -30,9 +30,7 @@ get_header(); ?>
 			
       <?php if ( get_the_content() ) { ?>
       <div class="entry-content">
-        <div class="wrapper">
-          <?php the_content(); ?>
-        </div>
+        <?php the_content(); ?>
       </div> 
       <?php } ?>
 

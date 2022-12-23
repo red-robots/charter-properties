@@ -35,6 +35,21 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 400;1,
 500;1,
 600;1,
+700&family=Josefin+Slab:ital,
+wght@0,
+100;0,
+200;0,
+300;0,
+400;0,
+500;0,
+600;0,
+700;1,
+100;1,
+200;1,
+300;1,
+400;1,
+500;1,
+600;1,
 700&display=swap";html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
 body{margin:0}
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}
@@ -1361,9 +1376,11 @@ button.swiper-pagination-bullet{border:0;margin:0;padding:0;-webkit-box-shadow:n
 div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong{overflow-wrap:normal;word-wrap:normal;-ms-word-break:normal;word-break:normal;word-break:normal;-ms-hyphens:none;-webkit-hyphens:none;hyphens:none;page-break-inside:avoid}
 *{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}
 pre{font-family:"Courier 10 Pitch",Courier,monospace;font-size:13px;line-height:1.3;color:#000;display:block;position:relative;z-index:1000;border:1px solid #fff;margin:5vw;padding:20px}
-body{font-family:"Josefin Sans",sans-serif;font-size:18px;font-weight:300;line-height:1.5;color:#000}
+body{font-family:"Josefin Slab",serif;font-size:18px;font-weight:400;line-height:1.5;color:#000}
+h1,h2,h3,h4,h5,h6{font-family:"Josefin Sans",sans-serif}
 .h1,h1{font-size:2rem}
-.h2,h2{font-size:1.8rem;font-weight:500}
+h2{font-size:1.8rem;font-weight:500}
+.h2{font-size:1.8rem;font-weight:700;text-transform:uppercase;max-width:500px;width:100%;margin:0 auto 30px}
 section:focus,div:focus{outline:0}
 a,input,button,select,textarea{-webkit-transition:all ease .3s;transition:all ease .3s}
 a{color:#3a80bc;text-decoration:underline}
@@ -1390,7 +1407,7 @@ body.home #content{min-height:10em;background:#073253}
 #site-navigation ul{margin:0;padding:0;list-style:none}
 #site-navigation ul.menu{display:inline-block;float:right}
 #site-navigation ul.menu>li{float:left}
-#site-navigation ul.menu a{display:block;text-decoration:none;position:relative}
+#site-navigation ul.menu a{font-family:"Josefin Sans",sans-serif;display:block;text-decoration:none;position:relative}
 #site-navigation ul.menu>li>a{font-size:1.1em;font-weight:normal;color:#073253;padding:40px 15px}
 #site-navigation ul.menu>li:hover>a{color:#858787}
 #site-navigation ul.menu li.current-menu-item>a{color:#858787}
@@ -1416,7 +1433,12 @@ body.mobile-menu-open #site-navigation{right:0;z-index:9999}
 .banner-wrapper .banner .slide{background-color:#ccc}
 .banner-wrapper .banner .slideImage{width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#ccc}
 .banner-wrapper .banner .caption{width:100%;height:100%;position:absolute;top:0;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:rgba(0,0,0,.6);text-align:center;padding:20px}
-.banner-wrapper .banner .caption .text{font-size:3.5vh;font-weight:600;line-height:1.2;text-transform:uppercase;color:#fff;max-width:750px;width:100%}
+.banner-wrapper .banner .caption .text{font-family:"Josefin Sans",sans-serif;font-size:3.5vh;font-weight:600;line-height:1.2;text-transform:uppercase;color:#fff;max-width:750px;width:100%}
+.subpage-banner .wrapper{position:relative;padding:0;max-width:calc(85% - 40px)}
+.subpage-banner .banner-text{width:100%;height:100%;position:absolute;top:0;left:0;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.subpage-banner .banner-text:before{content:"";display:block;width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(7,50,83,.6)}
+.subpage-banner .banner-text h1{font-size:2.5rem;font-weight:700;text-transform:uppercase;line-height:1.2;color:#fff;position:relative;z-index:10}
+.subpage-banner img{width:100%;height:auto}
 body.home #content #intro{margin-top:-70px}
 .medium-width{max-width:850px;width:100%;margin:0 auto}
 .slideshow .swiper,.slideshow .swiper-wrapper,.slideshow .swiper-slide{height:100%}
@@ -1466,7 +1488,7 @@ body.home #content #intro{margin-top:-70px}
 .home--tabs .title .t1{font-size:1.1em;font-weight:600;line-height:1.2;color:#fff}
 .home-tabs-content{position:absolute;bottom:0;right:0;width:50%;height:100%;z-index:25}
 .home-tabs-content .tabText{display:none;-webkit-animation-duration:1s;animation-duration:1s}
-.home-tabs-content .tabText.active{display:block;position:absolute;bottom:50px;right:0;background:#fff;padding:15px;font-weight:400;font-size:16px;line-height:1.5;-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-name:"fadeInRight";animation-name:"fadeInRight"}
+.home-tabs-content .tabText.active{display:block;position:absolute;bottom:50px;right:0;background:#fff;padding:15px;font-weight:500;font-size:16px;line-height:1.5;-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-name:"fadeInRight";animation-name:"fadeInRight"}
 .home--tabs{position:relative;bottom:0;left:0;width:100%;height:100%}
 .home--tabs .tabTitle .title a{display:block;padding:10px 50px 10px 30px;position:relative}
 .home--tabs .tabTitle .title a:before{content:"";display:block;width:0;height:100%;-webkit-transition:all ease .3s;transition:all ease .3s;position:absolute;top:0;left:0;z-index:1}
@@ -1493,9 +1515,39 @@ body.home #content #intro{margin-top:-70px}
 .home-tabs-arrows a.next:after{-webkit-transform:translateY(0) rotate(45deg);transform:translateY(0) rotate(45deg)}
 .wp-block-group.mission{position:relative;z-index:25}
 .wp-block-group.mission:before{content:"";display:block;height:0;width:50px;border-bottom:30px solid #bf7b2b;border-left:50px solid transparent;border-right:50px solid transparent;position:absolute;top:-28px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
-.wp-block-group.mission .wp-block-group__inner-container{font-weight:400}
+.wp-block-group.mission .wp-block-group__inner-container{font-weight:500}
 #main{min-height:30em}
-.site-footer{background:#cfd2d3;border-bottom:5px solid #bf7b2b}
+.pull-top{position:relative;top:-100px;padding-top:200px}
+.wp-block-group.history{position:relative;z-index:10}
+.wp-block-group.history:before{content:"";display:block;height:0;width:50px;border-bottom:30px solid #fff;border-left:50px solid transparent;border-right:50px solid transparent;position:absolute;top:-125px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
+.mission-column .midwrapper{max-width:900px;width:100%;margin:0 auto;text-align:center}
+.timeline-swiper.wrapper{max-width:80vw}
+.timeline-swiper .inner{background:#cfd2d3;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
+.timeline-swiper .inner .text{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:50px}
+.timeline-swiper .inner .text .large-text{font-family:"Josefin Sans",sans-serif;font-size:14vw;font-weight:700;line-height:1;color:#073253}
+.timeline-swiper .inner .text .small-text{font-size:5.5vw;font-weight:600;line-height:1.2;color:#fff}
+.timeline-swiper .inner .photo{margin:0;width:100%;padding:5vw 3vw;position:relative}
+.timeline-swiper .inner .photo:after{content:"";display:block;width:100%;height:30%;position:absolute;bottom:0;right:0;background:#fff}
+.timeline-swiper .inner .photo img{width:100%;height:auto;position:relative;z-index:10}
+.timelineWrap .swiper-button-prev,.timelineWrap .swiper-button-next{width:55px;height:55px;background:#bf7b2b;color:#fff;-webkit-transition:all ease .3s;transition:all ease .3s;z-index:10}
+.timelineWrap .swiper-button-prev:before,.timelineWrap .swiper-button-prev:after,.timelineWrap .swiper-button-next:before,.timelineWrap .swiper-button-next:after{-webkit-transition:all ease .3s;transition:all ease .3s}
+.timelineWrap .swiper-button-next:before{content:"";position:absolute;top:50%;right:0;width:15vw;height:2px;background:#bf7b2b;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+.timelineWrap .swiper-button-next:after{-webkit-transform:scale(0.6);transform:scale(0.6)}
+.timelineWrap .swiper-button-next:hover:after{-webkit-transform:translateX(8px) scale(0.6);transform:translateX(8px) scale(0.6)}
+.timelineWrap .swiper-button-prev:before{content:"";position:absolute;top:50%;left:0;width:15vw;height:2px;background:#bf7b2b;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+.timelineWrap .swiper-button-prev:after{-webkit-transform:scale(0.6);transform:scale(0.6)}
+.timelineWrap .swiper-button-prev:hover:after{-webkit-transform:translateX(-8px) scale(0.6);transform:translateX(-8px) scale(0.6)}
+.timelineWrap .swiper-button-prev{left:0}
+.timelineWrap .swiper-button-next{right:0}
+.timelineWrap .swiper-pagination{display:none !important}
+.midwrapper{max-width:90%;width:100%;margin:0 auto !important;padding:100px 20px 50px;position:relative;z-index:10;font-weight:600}
+.midwrapper.narrow{max-width:900px}
+.midwrapper.sm{max-width:800px}
+.midwrapper.wide{max-width:1350px}
+.image-content{padding:0 0 !important}
+.image-content:before{content:"";display:block;width:30%;height:100%;position:absolute;top:0;left:0;background:#fff}
+.image-content .wp-block-column{position:relative;z-index:10}
+.site-footer{font-family:"Josefin Sans",sans-serif;background:#cfd2d3;border-bottom:5px solid #bf7b2b}
 .site-footer .wrapper{padding-top:70px;padding-bottom:60px}
 .site-footer .flexcol{width:100%;position:relative;color:#073253}
 .site-footer .flexcol a{display:inline-block;text-decoration:none;color:#073253}
@@ -1505,7 +1557,7 @@ body.home #content #intro{margin-top:-70px}
 .site-footer .email-icon{color:#fff !important}
 .site-footer .email-icon i{font-size:20px}
 .site-footer .widget,.site-footer .widget a{font-size:14px;font-weight:normal;line-height:1.4}
-.site-footer .widget{text-align:center;padding:10px 0;width:100%}
+.site-footer .widget{font-family:"Josefin Sans",sans-serif;text-align:center;padding:10px 0;width:100%}
 .site-footer .widget a{line-height:1.3}
 .site-footer .widget p:first-child{margin-top:0}
 .site-footer .widget p:last-child{margin-bottom:0}
@@ -1522,8 +1574,10 @@ body.home #content #intro{margin-top:-70px}
 .site-footer .footer-partners img{display:inline-block;width:33px;height:auto}
 @media(min-width:600px){.wrapper{max-width:85%}
 .home-boxes .item{width:50%}
+.midwrapper{max-width:85%}
 }@media(min-width:820px){.h1,h1{font-size:2.8rem}
-.h2,h2{font-size:2.5rem}
+h2{font-size:2.5rem}
+.h2{font-size:2.5rem}
 .banner-wrapper .wrapper{max-width:90%}
 .banner-wrapper .banner{height:80vh}
 .banner-wrapper .banner .caption{padding:0}
@@ -1535,6 +1589,12 @@ body.home #content #intro{margin-top:-70px}
 .home--tabs .title{padding:20px 0}
 .home--tabs .title img{height:50px}
 .home--tabs .title .t1{font-size:1.5em}
+.timeline-swiper .inner .text{width:60%;padding-top:0;padding-right:5vw}
+.timeline-swiper .inner .text .small-text{font-size:2.5vw}
+.timeline-swiper .inner .photo{width:40%}
+.timeline-swiper .inner .photo:after{display:none}
+.timeline-swiper .inner .photo:before{content:"";display:block;width:40%;height:100%;position:absolute;top:0;right:0;background:#fff}
+.image-content .textcol{padding-left:2vw;padding-right:6vw}
 .site-footer .flexcol.left{text-align:left;width:350px;padding-right:5vw;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .site-footer .flexcol.right{width:calc(100% - 350px);margin-left:-20px;margin-right:-20px;padding-top:20px;padding-bottom:20px;padding-left:4vw;margin-top:0;border-left:1px solid #fff;border-top:0}
 .site-footer .widget{width:50%;padding:10px 20px}

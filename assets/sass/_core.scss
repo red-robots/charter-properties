@@ -30,12 +30,15 @@ pre {
 body {
 	font-family: $font_primary;
 	font-size: 18px;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 1.5;
 	color: #000;
   @include max($midwidth) {
     padding-top: 80px;
   }
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: $font_secondary;
 }
 .h1, h1 {
   font-size: 2rem;
@@ -43,9 +46,20 @@ body {
     font-size: 2.8rem;
   }
 }
-.h2, h2 {
+h2 {
   font-size: 1.8rem;
   font-weight: 500;
+  @include tab {
+    font-size: 2.5rem;
+  }
+}
+.h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 30px;
   @include tab {
     font-size: 2.5rem;
   }
@@ -186,6 +200,7 @@ body.home {
     float: left;
   }
   ul.menu a {
+    font-family: $font_secondary;
     display: block;
     text-decoration: none;
     position: relative;
@@ -403,6 +418,7 @@ html  body.logged-in.admin-bar {
         padding: 0 0;
       }
       .text {
+        font-family: $font_secondary;
         font-size: 3.5vh;
         font-weight: 600;
         line-height: 1.2;
@@ -418,6 +434,51 @@ html  body.logged-in.admin-bar {
   }
 }
 
+.subpage-banner {
+  .wrapper {
+    position: relative;
+    padding: 0 0;
+    max-width: calc(85% - 40px);
+  }
+  .banner-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    @include flexgroup();
+    justify-content: center;
+    align-items: center;
+    &:before {
+      content:"";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba($primary,60%);
+      // background: -moz-linear-gradient(top,  rgba(19,86,122,1) 0%, rgba(29,66,84,0.6) 100%);
+      // background: -webkit-linear-gradient(top,  rgba(19,86,122,1) 0%,rgba(29,66,84,0.6) 100%);
+      // background: linear-gradient(to bottom,  rgba(19,86,122,1) 0%,rgba(29,66,84,0.6) 100%);
+      // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13567a', endColorstr='#991d4254',GradientType=0 );
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.2;
+      color: #FFF;
+      position: relative;
+      z-index: 10;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
 #main,
 .titlediv.wrapper {
   @include max($midwidth) {
@@ -747,7 +808,7 @@ body.home {
       background: #FFF;
       padding: 15px;
 
-      font-weight: 400;
+      font-weight: 500;
       font-size: 16px;
       line-height: 1.5;
       animation-duration: 0.3s;
@@ -932,7 +993,7 @@ body.home {
     transform: translateX(-50%);
   }
   .wp-block-group__inner-container {
-    font-weight: 400;
+    font-weight: 500;
   }
 }
 
@@ -940,9 +1001,220 @@ body.home {
   min-height: 30em;
 }
 
+.pull-top {
+  position: relative;
+  top: -100px;
+  padding-top: 200px;
+}
+
+.wp-block-group.history {
+  position: relative;
+  z-index: 10;
+  &:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 50px;
+    border-bottom: 30px solid #FFF;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    position: absolute;
+    top: -125px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.mission-column {
+  .midwrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.timeline-swiper {
+  &.wrapper {
+    max-width: 80vw;
+  }
+  .inner {
+    background: #CFD2D3;
+    @include flexgroup();
+    .text {
+      width: 100%;
+      @include flexgroup();
+      justify-content: center;
+      align-items: center;
+      padding-top: 50px;
+      @include tab {
+        width: 60%;
+        padding-top: 0;
+        padding-right: 5vw;
+      }
+      .large-text {
+        font-family: $font_secondary;
+        font-size: 14vw;
+        font-weight: 700;
+        line-height: 1;
+        color: $primary;
+      }
+      .small-text {
+        font-size: 5.5vw;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #FFF;
+        @include tab {
+          font-size: 2.5vw;
+        }
+      }
+    }
+    .photo {
+      margin: 0 0;
+      width: 100%;
+      padding: 5vw 3vw;
+      position: relative;
+      &:after {
+        content:"";
+        display: block;
+        width: 100%;
+        height: 30%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #FFF;
+      }
+      @include tab {
+        width: 40%;
+        &:after {display:none;}
+        &:before {
+          content:"";
+          display: block;
+          width: 40%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: #FFF;
+        }
+      }
+      img {
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+.timelineWrap {
+  .swiper-button-prev,
+  .swiper-button-next  {
+    width: 55px;
+    height: 55px;
+    background: $secondary;
+    color: #FFF;
+    transition: all ease .3s;
+    z-index: 10;
+    &:before, &:after {
+      transition: all ease .3s;
+    }
+  }
+  .swiper-button-next {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 15vw;
+      height: 2px;
+      background: $secondary;
+      transform: translateY(-50%);
+    }
+    &:after {
+      transform: scale(0.6);
+    }
+    &:hover{
+      &:after {
+        transform: translateX(8px) scale(0.6);
+      }
+    }
+  }
+  .swiper-button-prev {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 15vw;
+      height: 2px;
+      background: $secondary;
+      transform: translateY(-50%);
+    }
+    &:after {
+      transform: scale(0.6);
+    }
+    &:hover{
+      &:after {
+        transform: translateX(-8px) scale(0.6);
+      }
+    }
+  }
+  .swiper-button-prev{left:0;}
+  .swiper-button-next{right:0;}
+  .swiper-pagination {display:none!important;}
+}
+
+.midwrapper {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto!important;
+  padding: 100px 20px 50px;
+  position: relative;
+  z-index: 10;
+  font-weight: 600;
+  @include xs {
+    max-width: 85%;
+  }
+  &.narrow {
+    max-width: 900px;
+  }
+  &.sm {
+    max-width: 800px;
+  }
+  &.wide {
+    max-width: 1350px;
+  }
+}
+
+.image-content {
+  padding: 0 0!important;
+  &:before {
+    content:"";
+    display: block;
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FFF;
+  }
+  .wp-block-column {
+    position: relative;
+    z-index: 10;
+  }
+  .textcol {
+    @include tab {
+      padding-left: 2vw;
+      padding-right: 6vw;
+    }
+  }
+}
 
 /* FOOTER */
 .site-footer {
+  font-family: $font_secondary;
   background: $gray2;
   border-bottom: 5px solid $secondary;
   .wrapper {
@@ -1003,6 +1275,7 @@ body.home {
     line-height: 1.4;
   }
   .widget {
+    font-family: $font_secondary;
     text-align: center;
     padding: 10px 0;
     width: 100%;
