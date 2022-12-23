@@ -1531,7 +1531,7 @@ body.home #content #intro{margin-top:-70px}
 .timeline-swiper .inner .photo img{width:100%;height:auto;position:relative;z-index:10}
 .timelineWrap .swiper-button-prev,.timelineWrap .swiper-button-next{width:55px;height:55px;background:#bf7b2b;color:#fff;-webkit-transition:all ease .3s;transition:all ease .3s;z-index:10}
 .timelineWrap .swiper-button-prev:before,.timelineWrap .swiper-button-prev:after,.timelineWrap .swiper-button-next:before,.timelineWrap .swiper-button-next:after{-webkit-transition:all ease .3s;transition:all ease .3s}
-.timelineWrap .swiper-button-next:before{content:"";position:absolute;top:50%;right:0;width:15vw;height:2px;background:#bf7b2b;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+.timelineWrap .swiper-button-next:before{content:"";position:absolute;top:50%;right:20px;width:15vw;height:2px;background:#bf7b2b;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 .timelineWrap .swiper-button-next:after{-webkit-transform:scale(0.6);transform:scale(0.6)}
 .timelineWrap .swiper-button-next:hover:after{-webkit-transform:translateX(8px) scale(0.6);transform:translateX(8px) scale(0.6)}
 .timelineWrap .swiper-button-prev:before{content:"";position:absolute;top:50%;left:0;width:15vw;height:2px;background:#bf7b2b;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
@@ -1594,6 +1594,7 @@ h2{font-size:2.5rem}
 .timeline-swiper .inner .photo{width:40%}
 .timeline-swiper .inner .photo:after{display:none}
 .timeline-swiper .inner .photo:before{content:"";display:block;width:40%;height:100%;position:absolute;top:0;right:0;background:#fff}
+.timelineWrap .swiper-button-next:before{right:50px}
 .image-content .textcol{padding-left:2vw;padding-right:6vw}
 .site-footer .flexcol.left{text-align:left;width:350px;padding-right:5vw;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .site-footer .flexcol.right{width:calc(100% - 350px);margin-left:-20px;margin-right:-20px;padding-top:20px;padding-bottom:20px;padding-left:4vw;margin-top:0;border-left:1px solid #fff;border-top:0}

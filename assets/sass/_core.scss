@@ -1129,11 +1129,14 @@ body.home {
       content: "";
       position: absolute;
       top: 50%;
-      right: 0;
+      right: 20px;
       width: 15vw;
       height: 2px;
       background: $secondary;
       transform: translateY(-50%);
+      @include tab {
+        right: 50px;
+      }
     }
     &:after {
       transform: scale(0.6);
