@@ -1327,15 +1327,15 @@ body.home {
     .photo {
       margin: 0 0;
       padding: 0 0;
-      width: 48%;
       position: relative;
+      width: 48%;
+      @include tab {
+        width: 100%;
+      }
       .image {
         display: block;
         width: 100%;
         float: left;
-        // position: absolute;
-        // top: 0;
-        // left: 0;
         background-image: none;
         @include backgroundImage(center);
       }
@@ -1372,6 +1372,9 @@ body.home {
     }
     .info {
       width: 48%;
+      @include tab {
+        width: 100%;
+      }
     }
   }
   .inner {
