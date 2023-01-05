@@ -9,27 +9,11 @@ add_action('init', 'js_custom_init', 1);
 function js_custom_init() {
     $post_types = array(
         array(
-          'post_type' => 'project',
-          'menu_name' => 'Projects',
-          'plural'    => 'Projects',
-          'single'    => 'Project',
-          'menu_icon' => 'dashicons-archive',
-          'supports'  => array('title')
-        ),
-        array(
-          'post_type' => 'services',
-          'menu_name' => 'Services',
-          'plural'    => 'Services',
-          'single'    => 'Service',
-          'menu_icon' => 'dashicons-list-view',
-          'supports'  => array('title')
-        ),
-        array(
-          'post_type' => 'team',
-          'menu_name' => 'Team',
-          'plural'    => 'Teams',
-          'single'    => 'Team',
-          'menu_icon' => 'dashicons-groups',
+          'post_type' => 'communities',
+          'menu_name' => 'Communities',
+          'plural'    => 'Communities',
+          'single'    => 'Community',
+          'menu_icon' => 'dashicons-admin-multisite',
           'supports'  => array('title','editor')
         ),
         array(
@@ -38,6 +22,14 @@ function js_custom_init() {
           'plural'    => 'Careers',
           'single'    => 'Career',
           'menu_icon' => 'dashicons-megaphone',
+          'supports'  => array('title','editor')
+        ),
+        array(
+          'post_type' => 'team',
+          'menu_name' => 'Team',
+          'plural'    => 'Teams',
+          'single'    => 'Team',
+          'menu_icon' => 'dashicons-groups',
           'supports'  => array('title','editor')
         ),
     );
@@ -113,6 +105,13 @@ function build_taxonomies() {
       'plural'    => 'Divisions',
       'single'    => 'Division',
       'taxonomy'  => 'divisions'
+    ),
+    array(
+      'post_type' => array('communities'),
+      'menu_name' => 'Community Status',
+      'plural'    => 'Community Status',
+      'single'    => 'Community Status',
+      'taxonomy'  => 'community-status'
     ),
   );
 

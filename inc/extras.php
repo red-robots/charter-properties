@@ -709,7 +709,10 @@ function timeline_shortcode_func( $atts ) {
 
                 <?php if ($photo) { ?>
                 <figure class="photo">
-                  <img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>">
+                  <span style="background-image:url('<?php echo $photo['url'] ?>')">
+                    <img src="<?php echo get_stylesheet_directory_uri() ?>/images/helper-portrait.png" alt="" class="helper">
+                    <img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>" class="actual">
+                  </span>
                 </figure>
                 <?php } ?>
               </div>
@@ -732,5 +735,68 @@ function timeline_shortcode_func( $atts ) {
 }
 
 
+add_shortcode( 'our_communities', 'our_communities_shortcode_func' );
+function our_communities_shortcode_func( $atts ) {
+  $a = shortcode_atts( array(
+    'perpage'=>'-1'
+  ), $atts );
+  $perpage = ($a['perpage']) ? $a['perpage'] : '-1';
+  $args = array(
+    'posts_per_page'   => $perpage,
+    'post_type'        => 'communities',
+    'post_status'      => 'publish'
+  );
+  $entries = new WP_Query($args); 
+  $output = '';
+  ob_start();
+  if ( $entries->have_posts() ) { ?>
+  <section class="communities-feeds">
+    <div class="arrowdiv"><span class="arrdown"></span></div>
+    <div class="blocks-wrapper">
+      <?php $i=1; while ( $entries->have_posts() ) : $entries->the_post(); 
+        $placeholder = THEMEURI . 'images/image-not-available.jpg';
+        $location = get_field('location');
+        $main_photo = get_field('main_photo');
+        $button = get_field('view_button');
+        $link = ( $button && isset($button['url']) && $button['url'] ) ? $button['url'] : '';
+        $linkText = ( $button && isset($button['title']) && $button['title'] ) ? $button['title'] : '';
+        $linkTarget = ( $button && isset($button['target']) && $button['target'] ) ? $button['target'] : '_self';
+        $has_photo = ($main_photo) ? 'has_photo':'no_photo';
+        $columnClass = ($main_photo && get_the_content()) ? ' half':' full';
+        $loop = ( $i % 2 == 0 ) ? ' even':' odd';
+        ?>
+        <div class="block <?php echo $has_photo.$columnClass.$loop ?>">
+          <div class="inner">
+            <figure class="photo">
+              <?php if ($main_photo) { ?>
+              <span class="image" style="background-image:url('<?php echo $main_photo['url'] ?>')"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true"></span>
+              <?php } else { ?>
+                <img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
+              <?php } ?>
+              <?php if ( $linkText && $link ) { ?><div class="more-button"><a href="<?php echo $link ?>" target="<?php echo $linkTarget ?>" class="viewbtn"><?php echo $linkText ?></a></div><?php } ?>
+            </figure>
+            <div class="info">
+              <div class="titlewrap">
+                <h3 class="name"><?php the_title(); ?></h4>
+                <?php if ($location) { ?><div class="location"><?php echo $location ?></div><?php } ?>
+              </div>
+              <?php if ( get_the_content() ||  $linkText && $link ) { ?>
+              <div class="textwrap">
+                <?php if ( get_the_content() ) { ?><div class="text"><?php the_content(); ?></div><?php } ?>
+              </div>  
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+      <?php $i++; endwhile;  ?>
+    </div>
+  </section>
+<?php
+  }
+  $output = ob_get_contents();
+  ob_end_clean();
+
+  return $output;
+}
 
 

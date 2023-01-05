@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.edit-post-visual-editor h1,
+.edit-post-visual-editor h2,
+.edit-post-visual-editor h3,
+.edit-post-visual-editor h4,
+.edit-post-visual-editor h5,
+.edit-post-visual-editor h6 {
+  font-family: 'Josefin Sans', sans-serif!important;
+}
+.edit-post-visual-editor * {
+  font-family: 'Josefin Slab', serif;
+}
+html :where(.editor-styles-wrapper) p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4!important;
+}
 .editor-styles-wrapper .is-root-container .wp-block {
   max-width: 100%!important;
   width: 100%!important;
