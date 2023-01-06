@@ -1074,13 +1074,19 @@ body.home {
         font-weight: 700;
         line-height: 1;
         color: $primary;
+        text-align: center;
+        @include tab {
+          text-align: left;
+        }
       }
       .small-text {
         font-size: 5.5vw;
         font-weight: 600;
         line-height: 1.2;
         color: #FFF;
+        text-align: center;
         @include tab {
+          text-align: left;
           font-size: 2.5vw;
         }
       }
@@ -1120,6 +1126,7 @@ body.home {
           display: block;
         }
       }
+
       &:after {
         content:"";
         display: block;
@@ -1238,38 +1245,62 @@ body.home {
   }
 }
 .wrapper {
-  max-width: $wrapper;
+  max-width: 100%;
   width: 100%;
   margin: 0 auto!important;
+  @include tab {
+    max-width: $wrapper;
+  }
   &.medium {
-    max-width: 900px;
+    @include tab {
+      max-width: 900px;
+    }
   }
   &.xs {
-    max-width: 600px;
+    @include tab {
+      max-width: 600px;
+    }
   }
   &.wide {
-    max-width: 1350px;
+    @include tab {
+      max-width: 1350px;
+    }
   }
 }
 
 .image-content {
   padding: 0 0!important;
   position: relative;
-  &:before {
-    content:"";
-    display: block;
-    width: 30%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #FFF;
+  @include tab {
+    &:before {
+      content:"";
+      display: block;
+      width: 30%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #FFF;
+    }
   }
   .wp-block-column {
     position: relative;
     z-index: 10;
   }
+  .imagecol {
+    @include max($tabwidth - 1px) {
+      figure {
+        margin: 30px 10vw 0;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
   .textcol {
+    padding-left: 10vw;
+    padding-right: 10vw;
     @include tab {
       padding-left: 2vw;
       padding-right: 6vw;

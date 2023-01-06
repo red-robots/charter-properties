@@ -1560,8 +1560,8 @@ body.home #content #intro{margin-top:-70px}
 .timeline-swiper.wrapper{max-width:80vw}
 .timeline-swiper .inner{background:#cfd2d3;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .timeline-swiper .inner .text{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:50px;padding-left:20px;padding-right:20px}
-.timeline-swiper .inner .text .large-text{font-family:"Josefin Sans",sans-serif;font-size:12vw;font-weight:700;line-height:1;color:#073253}
-.timeline-swiper .inner .text .small-text{font-size:5.5vw;font-weight:600;line-height:1.2;color:#fff}
+.timeline-swiper .inner .text .large-text{font-family:"Josefin Sans",sans-serif;font-size:12vw;font-weight:700;line-height:1;color:#073253;text-align:center}
+.timeline-swiper .inner .text .small-text{font-size:5.5vw;font-weight:600;line-height:1.2;color:#fff;text-align:center}
 .timeline-swiper .inner .photo{margin:0;width:100%;padding:5vw 4vw;position:relative}
 .timeline-swiper .inner .photo span{display:block;width:100%;float:left;position:relative;z-index:10;background-size:cover;background-position:center;background-repeat:no-repeat;background-size:contain;background-color:transparent}
 .timeline-swiper .inner .photo img{width:100%;height:auto;float:left}
@@ -1585,13 +1585,10 @@ body.home #content #intro{margin-top:-70px}
 .midwrapper.narrow{max-width:900px}
 .midwrapper.sm{max-width:800px}
 .midwrapper.wide{max-width:1350px}
-.wrapper{max-width:calc(90% - 40px);width:100%;margin:0 auto !important}
-.wrapper.medium{max-width:900px}
-.wrapper.xs{max-width:600px}
-.wrapper.wide{max-width:1350px}
+.wrapper{max-width:100%;width:100%;margin:0 auto !important}
 .image-content{padding:0 0 !important;position:relative}
-.image-content:before{content:"";display:block;width:30%;height:100%;position:absolute;top:0;left:0;background:#fff}
 .image-content .wp-block-column{position:relative;z-index:10}
+.image-content .textcol{padding-left:10vw;padding-right:10vw}
 .wp-block-group.communities{position:relative;margin-top:35px}
 .communities-feeds{position:relative}
 .communities-feeds .arrowdiv{position:absolute;top:-45px;left:0;width:100%;text-align:center}
@@ -1680,11 +1677,17 @@ h2{font-size:2.5rem}
 .home--tabs .title img{height:50px}
 .home--tabs .title .t1{font-size:1.5em}
 .timeline-swiper .inner .text{width:60%;padding-top:0;padding-left:5vw;padding-right:5vw}
-.timeline-swiper .inner .text .small-text{font-size:2.5vw}
+.timeline-swiper .inner .text .large-text{text-align:left}
+.timeline-swiper .inner .text .small-text{text-align:left;font-size:2.5vw}
 .timeline-swiper .inner .photo{width:40%}
 .timeline-swiper .inner .photo:after{display:none}
 .timeline-swiper .inner .photo:before{content:"";display:block;width:40%;height:100%;position:absolute;top:0;right:0;background:#fff}
 .timelineWrap .swiper-button-next:before{right:50px}
+.wrapper{max-width:calc(90% - 40px)}
+.wrapper.medium{max-width:900px}
+.wrapper.xs{max-width:600px}
+.wrapper.wide{max-width:1350px}
+.image-content:before{content:"";display:block;width:30%;height:100%;position:absolute;top:0;left:0;background:#fff}
 .image-content .textcol{padding-left:2vw;padding-right:6vw}
 .communities-feeds .has_photo .photo{width:48%;margin-bottom:0}
 .communities-feeds .has_photo .info{width:48%}
@@ -1721,6 +1724,8 @@ html body.logged-in.admin-bar #wpadminbar{position:fixed !important;top:0;left:0
 .home-tabs-content .tabText.active{position:relative}
 }@media screen and (max-width:820px){.home-tabs-arrows{width:100%}
 .home-tabs-arrows a.next{position:absolute;right:0}
+}@media screen and (max-width:819px){.image-content .imagecol figure{margin:30px 10vw 0}
+.image-content .imagecol figure img{width:100%;height:auto}
 }@media screen and (max-width:480px){.timeline-swiper .inner .photo span{background-image:none !important}
 .timeline-swiper .inner .photo img.helper{display:none}
 .timeline-swiper .inner .photo img.actual{display:block}
