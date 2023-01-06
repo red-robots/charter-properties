@@ -1445,7 +1445,7 @@ body.home #content{min-height:10em;background:#073253}
 #site-navigation ul.menu>li:hover>a{color:#858787}
 #site-navigation ul.menu li.current-menu-item>a{color:#858787}
 #site-navigation ul.menu li.current-menu-item>a:before{content:"";display:block;width:100%;height:5px;background:#bf7b2b;position:absolute;top:0;left:0}
-#menu-toggle{display:none;width:40px;height:40px;position:absolute;top:15px;right:0;z-index:99999;background:transparent;cursor:pointer;-webkit-transition:all ease .3s;transition:all ease .3s}
+#menu-toggle{display:none;width:40px;height:40px;position:absolute;top:15px;right:10px;z-index:99999;background:transparent;cursor:pointer;-webkit-transition:all ease .3s;transition:all ease .3s}
 #menu-toggle span.bar,#menu-toggle span.bar:before,#menu-toggle span.bar:after{display:block;height:3px;border-radius:30px;background:#000;-webkit-transition:all ease .3s;transition:all ease .3s;position:absolute;left:0}
 #menu-toggle span.bar{width:80%;top:50%;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%)}
 #menu-toggle span.bar:before,#menu-toggle span.bar:after{content:"";width:100%}
@@ -1705,8 +1705,8 @@ h2{font-size:2.5rem}
 .site-footer .widget-2 .widget{width:50%;font-size:17px}
 .site-footer .footer-partners img{margin-left:8px}
 }@media(min-width:980px){.site-footer .widget{width:33.333%;text-align:left}
-}@media screen and (max-width:980px){body{padding-top:80px}
-.site-header{position:fixed;top:0;left:0;width:100%;height:70px;z-index:100;background:#fff}
+}@media screen and (max-width:980px){body{padding-top:70px}
+.site-header{position:fixed;top:0;left:0;width:100%;height:70px;z-index:100;background:#fff;padding-left:15px;padding-right:15px}
 .site-header .site-logo{position:absolute;top:10px;left:0;width:145px}
 #site-navigation{position:fixed;top:0;right:-100vw;max-width:350px;width:100%;height:100%;background:#fff;padding:20px 0 0;-webkit-transition:all ease .3s;transition:all ease .3s;z-index:-999}
 #site-navigation ul.menu>li{width:100%}
