@@ -694,29 +694,7 @@ function timeline_shortcode_func( $atts ) {
             $small = $e['text'];
             $photo = $e['image'];
             ?>
-            <div class="swiper-slide">
-              <div class="inner">
-                <div class="text">
-                  <div class="wrap">
-                    <?php if ($large) { ?>
-                     <div class="large-text"><?php echo $large ?></div> 
-                    <?php } ?>
-                    <?php if ($small) { ?>
-                     <div class="small-text"><?php echo $small ?></div> 
-                    <?php } ?>
-                  </div>
-                </div>
-
-                <?php if ($photo) { ?>
-                <figure class="photo">
-                  <span style="background-image:url('<?php echo $photo['url'] ?>')">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/images/helper-portrait.png" alt="" class="helper">
-                    <img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>" class="actual">
-                  </span>
-                </figure>
-                <?php } ?>
-              </div>
-            </div>
+            <div class="swiper-slide"><div class="inner"><div class="text"> <div class="wrap"> <?php if ($large) { ?> <div class="large-text"><?php echo $large ?></div> <?php } ?> <?php if ($small) { ?> <div class="small-text"><?php echo $small ?></div> <?php } ?> </div> </div> <?php if ($photo) { ?><figure class="photo"><span style="background-image:url('<?php echo $photo['url'] ?>')"><img src="<?php echo get_stylesheet_directory_uri() ?>/images/helper-portrait.png" alt="" class="helper"><img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>" class="actual"></span></figure><?php } ?></div></div>
           <?php } ?>
         </div>
       </div>
@@ -737,21 +715,36 @@ function timeline_shortcode_func( $atts ) {
 
 add_shortcode( 'our_communities', 'our_communities_shortcode_func' );
 function our_communities_shortcode_func( $atts ) {
+  global $post;
+  $post_id = $post->ID;
+  $default_perpage = 2;
   $a = shortcode_atts( array(
-    'perpage'=>'-1'
+    'perpage'=>$default_perpage
   ), $atts );
-  $perpage = ($a['perpage']) ? $a['perpage'] : '-1';
+  $perpage = ($a['perpage']) ? $a['perpage'] : $default_perpage;
+  $post_type = 'communities';
+  $taxonomy = 'community-status';
+  $current_term = (isset($_GET['term']) && $_GET['term']) ? $_GET['term'] : 'current';
+  $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
   $args = array(
-    'posts_per_page'   => $perpage,
-    'post_type'        => 'communities',
-    'post_status'      => 'publish'
+    'posts_per_page'    => $perpage,
+    'post_type'         => $post_type,
+    'paged'             => $paged,
+    'post_status'       => 'publish',
+    'tax_query' => array(
+      array(
+        'taxonomy'=> $taxonomy, 
+        'field'   => 'slug',
+        'terms'   => $current_term
+      )
+    )
   );
   $entries = new WP_Query($args); 
   $output = '';
   ob_start();
   if ( $entries->have_posts() ) { ?>
-  <section class="communities-feeds">
-    <div class="arrowdiv"><span class="arrdown"></span></div>
+  <section id="our-communities" class="communities-feeds">
+    <div class="arrowdiv"><a href="#our-communities" class="arrdown" aria-label="Explore Our Communities"></a></div>
     <div class="blocks-wrapper">
       <?php $i=1; while ( $entries->have_posts() ) : $entries->the_post(); 
         $placeholder = THEMEURI . 'images/image-not-available.jpg';
@@ -790,6 +783,83 @@ function our_communities_shortcode_func( $atts ) {
         </div>
       <?php $i++; endwhile;  ?>
     </div>
+
+    <?php 
+      $total_pages = $entries->max_num_pages;
+      if ($total_pages > 1){ ?>
+      <div id="pagination" class="pagination">
+        <?php
+          $pagination = array(
+          'base' => @add_query_arg('pg','%#%'),
+          'format' => '?paged=%#%',
+          'current' => $paged,
+          'total' => $total_pages,
+          'prev_text' => __( '&laquo;', 'bellaworks' ),
+          'next_text' => __( '&raquo;', 'bellaworks' ),
+          'type' => 'plain'
+          );
+          echo paginate_links($pagination);
+        ?>
+      </div>
+      <?php } ?>
+
+    </div>
+
+    <?php  
+    $stats = array('past','future');
+    $terms = get_terms([
+      'taxonomy' => $taxonomy,
+      'hide_empty' => true,
+    ]);
+    if($terms) { ?>
+    <div class="bottom-post-terms-wrap wrapper sm">
+      <div class="bottom-post-terms">
+      <?php $i=1; foreach($terms as $term) {
+        $termSlug = $term->slug;
+        $termName = $term->name;
+        $termID = $term->term_id;
+        $termLink = get_term_link($term, $taxonomy);
+        $is_active = ($termSlug=='past') ? ' active':'';
+        if(isset($_GET['term']) && $_GET['term']) {
+          if($current_term==$termSlug) {
+            $is_active = ' active';
+          } else {
+            $is_active = '';
+          }
+        } else {
+          $is_active = ($i==1) ? ' active':'';
+        }
+        
+        if( in_array($termSlug,$stats) ) { ?>
+        <div class="termInfo<?php echo $is_active ?>">
+          <a href="<?php echo get_permalink($post_id) . '?term=' . $termSlug ?>"><?php echo $termName ?> Communities</a>
+        </div>
+        <?php $i++; }
+      } ?>
+      </div>
+    </div>   
+    <?php }
+    ?>
+
+    <div class="carousel-communities-wrap">
+      <div class="wrapper">
+        <div id="carousel-communities" class="owl-carousel owl-theme">
+          <div class="item"><h4>1</h4></div>
+          <div class="item"><h4>2</h4></div>
+          <div class="item"><h4>3</h4></div>
+          <div class="item"><h4>4</h4></div>
+          <div class="item"><h4>5</h4></div>
+          <div class="item"><h4>6</h4></div>
+          <div class="item"><h4>7</h4></div>
+          <div class="item"><h4>8</h4></div>
+          <div class="item"><h4>9</h4></div>
+          <div class="item"><h4>10</h4></div>
+          <div class="item"><h4>11</h4></div>
+          <div class="item"><h4>12</h4></div>
+        </div>
+      </div>
+    </div>
+
   </section>
 <?php
   }

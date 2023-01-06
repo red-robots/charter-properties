@@ -38,11 +38,21 @@
   <?php } ?>
 <?php } else { ?>
 
-  <?php if ( $banner = get_field('banner') ) { ?>
+  <?php if ( $banner = get_field('banner') ) { 
+    $page_title = get_the_title();
+    global $post;
+    $postName = (isset($post->post_name) && $post->post_name) ? $post->post_name : '';
+    if($postName=='our-communities') {
+      $current_term = (isset($_GET['term']) && $_GET['term']) ? ucwords($_GET['term']) : '';
+      if($current_term) {
+        $page_title = $current_term . ' Communities';
+      }
+    }
+  ?>
   <div class="subpage-banner">
     <div class="wrapper">
       <div class="banner-text">
-        <h1 class="hero-title"><?php echo get_the_title(); ?></h1>
+        <h1 class="hero-title"><?php echo $page_title; ?></h1>
       </div>
       <img src="<?php echo $banner['url'] ?>" alt="<?php echo $banner['title'] ?>">
     </div>
