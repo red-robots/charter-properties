@@ -1563,7 +1563,7 @@ body.home #content #intro{margin-top:-70px}
 .timeline-swiper .inner .text .large-text{font-family:"Josefin Sans",sans-serif;font-size:12vw;font-weight:700;line-height:1;color:#073253}
 .timeline-swiper .inner .text .small-text{font-size:5.5vw;font-weight:600;line-height:1.2;color:#fff}
 .timeline-swiper .inner .photo{margin:0;width:100%;padding:5vw 4vw;position:relative}
-.timeline-swiper .inner .photo span{display:block;width:100%;float:left;position:relative;z-index:10;background-size:cover;background-position:center;background-repeat:no-repeat;background-size:contain;background-color:#656565}
+.timeline-swiper .inner .photo span{display:block;width:100%;float:left;position:relative;z-index:10;background-size:cover;background-position:center;background-repeat:no-repeat;background-size:contain;background-color:transparent}
 .timeline-swiper .inner .photo img{width:100%;height:auto;float:left}
 .timeline-swiper .inner .photo img.helper{display:block}
 .timeline-swiper .inner .photo img.actual{display:none}

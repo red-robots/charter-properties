@@ -1098,7 +1098,7 @@ body.home {
         z-index: 10;
         @include backgroundImage(center);
         background-size: contain;
-        background-color: #656565;
+        background-color: transparent;
         @include max($portrait) {
           background-image:none!important;
         }
