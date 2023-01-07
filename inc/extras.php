@@ -748,7 +748,7 @@ function our_communities_shortcode_func( $atts ) {
     <div class="blocks-wrapper">
       <?php $i=1; while ( $entries->have_posts() ) : $entries->the_post(); 
         $placeholder = THEMEURI . 'images/image-not-available.jpg';
-        $location = get_field('location');
+        //$location = get_field('location');
         $main_photo = get_field('main_photo');
         $button = get_field('view_button');
         $link = ( $button && isset($button['url']) && $button['url'] ) ? $button['url'] : '';
@@ -757,6 +757,12 @@ function our_communities_shortcode_func( $atts ) {
         $has_photo = ($main_photo) ? 'has_photo':'no_photo';
         $columnClass = ($main_photo && get_the_content()) ? ' half':' full';
         $loop = ( $i % 2 == 0 ) ? ' even':' odd';
+        $term = get_the_terms(get_the_ID(),'community-location');
+        $location = '';
+        if($term) {
+          // $termID = $term[0]->term_id;
+          $location = $term[0]->name;
+        }
         ?>
         <div class="block <?php echo $has_photo.$columnClass.$loop ?>">
           <div class="inner">
