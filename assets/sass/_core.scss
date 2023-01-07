@@ -1504,10 +1504,7 @@ body.home {
   }
 }
 body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap {
-  margin-left: -20px!important;
-  margin-right: -20px!important;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 100px -20px!important;
   position: relative;
   padding: 25px 0 30px;
   &:before {
@@ -1519,6 +1516,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     position: absolute;
     top: 0;
     left: 0;
+  }
+  #carousel-communities {
+    margin-left: -20px!important;
+    margin-right: -20px!important;
   }
   .wrapper {
     max-width: $wrapper;
@@ -1536,11 +1537,40 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     text-align: center;
     background: #FFF;
     color: $primary;
-    min-height: 15em;
+    min-height: 12em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    align-content: center;
     justify-content: center;
+    .inside {
+      padding: 20px;
+    }
+    h4 {
+      color: $secondary;
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin:0 0 30px;
+    }
+    .location {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      &:after {
+        content:"";
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: $secondary;
+        margin: 0 auto;
+      }
+    }
+    .units {
+      font-weight: 600;
+      color: $teal;
+    }
   }
   .owl-nav {
     // width: 13.2vw;
@@ -1623,6 +1653,45 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     background-color: $teal;
     color: $primary;
     font-weight: 700;
+  }
+}
+
+.communities-tab-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  span {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: $font_secondary;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 13px;
+    margin-left: 13px;
+    &:before {
+      content:"";
+      display: block;
+      width: 2px;
+      height: 88%;
+      background: #FFF;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    strong {
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+  span.first {
+    padding-left: 0;
+    margin-left: 0;
+    &:before {
+      display: none;
+    }
   }
 }
 

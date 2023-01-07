@@ -113,6 +113,13 @@ function build_taxonomies() {
       'single'    => 'Community Status',
       'taxonomy'  => 'community-status'
     ),
+    array(
+      'post_type' => array('communities'),
+      'menu_name' => 'Community Location',
+      'plural'    => 'Community Locations',
+      'single'    => 'Community Location',
+      'taxonomy'  => 'community-location'
+    ),
   );
 
 
@@ -175,8 +182,10 @@ function set_custom_cpt_columns($columns) {
     else if($post_type=='communities') {
         unset($columns['date']);
         unset($columns['taxonomy-community-status']);
+        unset($columns['taxonomy-community-location']);
         $columns['title'] = __( 'Name', 'bellaworks' );
         $columns['units'] = __( 'Total Units', 'bellaworks' );
+        $columns['taxonomy-community-location'] = __( 'Location', 'bellaworks' );
         $columns['taxonomy-community-status'] = __( 'Category', 'bellaworks' );
         $columns['date'] = __( 'Date', 'bellaworks' );
     }

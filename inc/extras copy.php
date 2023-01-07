@@ -822,8 +822,6 @@ function communities_tabs_shortcode_func( $atts ) {
       'hide_empty' => true,
     ]);
     $output = '';
-    $current_term = (isset($_GET['tab']) && $_GET['tab']) ? $_GET['tab'] : 'past';
-    $communityType = '';
     ob_start();
     if($terms) { ?>
     <div class="bottom-post-terms-wrap wrapper sm">
@@ -833,13 +831,21 @@ function communities_tabs_shortcode_func( $atts ) {
         $termName = $term->name;
         $termID = $term->term_id;
         $termLink = get_term_link($term, $taxonomy);
-        $is_active = ($i==1) ? ' active':'';
-        if($termSlug==$current_term) {
-          $communityType = $termName.' Communities';
+        $is_active = ($termSlug=='past') ? ' active':'';
+        if(isset($_GET['term']) && $_GET['term']) {
+          if($current_term==$termSlug) {
+            $is_active = ' active';
+          } else {
+            $is_active = '';
+          }
+        } else {
+          $is_active = ($i==1) ? ' active':'';
         }
+        
         if( in_array($termSlug,$stats) ) { ?>
         <div class="termInfo termTab<?php echo $is_active ?>">
-          <a href="javascript:void(0)" data-termid="<?php echo $termID ?>" data-slug="<?php echo $termSlug ?>"><?php echo $termName ?> Communities</a>
+          <!-- <a href="<?php //echo get_permalink($post_id) . '?term=' . $termSlug ?>"><?php //echo $termName ?> Communities</a> -->
+          <a href="javascript:void(0)" data-termid="<?php echo $termID ?>" data-slug="<?php echo $termSlug ?>"><?php echo $termName ?></a>
         </div>
         <?php $i++; }
       } ?>
@@ -847,98 +853,29 @@ function communities_tabs_shortcode_func( $atts ) {
     </div>   
     <?php } ?>
 
-    <?php  
-    $items = query_communities_terms($current_term,$post_type,$taxonomy);
-    $locationItems = array();
-    $totalUnits = 0;
-    if($items) {
-      //echo "<pre>";
-      foreach($items as $e) {
-        $postid = $e->ID;
-        $term = get_the_terms($postid,'community-location');
-        if($term) {
-          $termID = $term[0]->term_id;
-          $termName = $term[0]->name;
-          $termSlug = $term[0]->slug;
-          $locationItems[$termID] = $termName;
-        }
-        $units = get_field('total_units',$postid);
-        $unitNum = ($units) ? $units : 0;
-        $totalUnits += $unitNum;
-      }
-      //echo "</pre>";
-    }
-    $countStats = ($items) ? count($items) : '0';
-    $locationCount = ($locationItems) ? count($locationItems) : '0';
-    $countUnits = ($totalUnits>0) ? number_format($totalUnits) : '0';
-    if($items) { ?>
-      <div class="carousel-communities-wrap">
-        <div class="wrapper">
-          <div class="communities-tab-info">
-            <span class="first"><?php echo $communityType; ?>: <strong><?php echo $countStats; ?></strong></span><span>Locations: <strong><?php echo $locationCount; ?></strong></span><span>Total Units: <strong><?php echo $countUnits; ?></strong></span>
-          </div>
-          <div id="carousel-communities" class="owl-carousel owl-theme">
-            <?php foreach ($items as $e) { 
-              $postid = $e->ID;
-              $title = $e->post_title;
-              $units = get_field('total_units',$postid);
-              $term = get_the_terms($postid,'community-location');
-              $termName = '';
-              if($term) {
-                $termID = $term[0]->term_id;
-                $termName = $term[0]->name;
-                $termSlug = $term[0]->slug;
-                $locationItems[$termID] = $termName;
-              }
-              $unit_terms = ($units && $units>1) ? $units.' units' : $units.' unit';
-              ?>
-              <div class="item">
-                <div class="inside">
-                  <h4><?php echo $title; ?></h4>
-                  <?php if ($termName) { ?>
-                  <div class="location"><?php echo $termName ?></div> 
-                  <?php } ?>
-                  <?php if ($units) { ?>
-                  <div class="units"><?php echo $unit_terms ?></div> 
-                  <?php } ?>
-                </div>
-              </div>
-            <?php } ?>
-          </div>
+    <div class="carousel-communities-wrap">
+      <div class="wrapper">
+        <div id="carousel-communities" class="owl-carousel owl-theme">
+          <div class="item"><h4>1</h4></div>
+          <div class="item"><h4>2</h4></div>
+          <div class="item"><h4>3</h4></div>
+          <div class="item"><h4>4</h4></div>
+          <div class="item"><h4>5</h4></div>
+          <div class="item"><h4>6</h4></div>
+          <div class="item"><h4>7</h4></div>
+          <div class="item"><h4>8</h4></div>
+          <div class="item"><h4>9</h4></div>
+          <div class="item"><h4>10</h4></div>
+          <div class="item"><h4>11</h4></div>
+          <div class="item"><h4>12</h4></div>
         </div>
       </div>
-    <?php }
+    </div>
+    <?php
     $output = ob_get_contents();
     ob_end_clean();
     return $output;
 }
-
-
-function query_communities_terms($termSlug,$post_type,$taxonomy) {
-  global $wpdb;
-  $query = "SELECT p.ID, p.post_title, term.term_id, term.name AS term_name 
-            FROM ".$wpdb->prefix."posts p," .$wpdb->prefix."term_taxonomy tax,".$wpdb->prefix."terms term,".$wpdb->prefix."term_relationships rel 
-            WHERE tax.taxonomy='".$taxonomy."' 
-            AND tax.term_id=term.term_id
-            AND term.term_id=rel.term_taxonomy_id
-            AND term.slug='".$termSlug."'
-            AND p.ID=rel.object_id
-            AND p.post_status='publish' AND p.post_type='".$post_type."'";
-
-  $result = $wpdb->get_results($query);
-  return ($result) ? $result : '';
-}
-
-
-// function query_communities_locations($object_id) {
-//   global $wpdb;
-//   $query = "SELECT p.ID, p.post_title, term.term_id, term.name AS term_name 
-//             FROM ".$wpdb->prefix."post p,".$wpdb->prefix."term_relationships rel,".$wpdb->prefix."terms term
-//             WHERE p.ID=rel.object_id AND term.term_id=rel.term_taxonomy_id";
-// }
-
-
-
 
 
 
