@@ -717,7 +717,7 @@ add_shortcode( 'our_communities', 'our_communities_shortcode_func' );
 function our_communities_shortcode_func( $atts ) {
   global $post;
   $post_id = $post->ID;
-  $default_perpage = 2;
+  $default_perpage = 10;
   $a = shortcode_atts( array(
     'perpage'=>$default_perpage
   ), $atts );
