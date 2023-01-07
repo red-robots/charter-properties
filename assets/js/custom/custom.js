@@ -195,12 +195,14 @@ jQuery(document).ready(function ($) {
 
 
   /* Home Carousel */
-  $('#carousel-communities').owlCarousel({
-    loop:true,
-    margin:0,
-    nav:true,
-    responsiveClass:true,
-    responsive:{
+  var communitiesCount = $('#carousel-communities .item').length;
+  if(communitiesCount>3) {
+    $('#carousel-communities').owlCarousel({
+      loop:true,
+      margin:0,
+      nav:true,
+      responsiveClass:true,
+      responsive:{
         0:{
             items:1
         },
@@ -210,7 +212,17 @@ jQuery(document).ready(function ($) {
         1000:{
             items:4
         }
-    }
-  });
+      }
+    });
+  } 
+  else {
+    $('#carousel-communities').owlCarousel({
+      loop:false,
+      margin:0,
+      nav:false,
+      items: 4
+    });
+  }
+  
 
 }); 
