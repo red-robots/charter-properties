@@ -1522,7 +1522,8 @@ body.home #content #intro{margin-top:-70px}
 .home-tabs-content{position:absolute;bottom:0;right:0;width:50%;height:100%;z-index:25}
 .home-tabs-content .tabText{display:none;-webkit-animation-duration:1s;animation-duration:1s}
 .home-tabs-content .tabText .inner{font-size:23px;font-weight:600;line-height:1.3}
-.home-tabs-content .tabText.active{display:block;position:absolute;bottom:50px;right:0;background:#fff;padding:15px;font-weight:500;font-size:16px;line-height:1.5;-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-name:"fadeInRight";animation-name:"fadeInRight"}
+.home-tabs-content .tabText .inner p:last-child{margin-bottom:0}
+.home-tabs-content .tabText.active{display:block;position:absolute;bottom:50px;right:0;background:#fff;padding:20px;font-weight:500;font-size:16px;line-height:1.5;-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-name:"fadeInRight";animation-name:"fadeInRight"}
 .home--tabs{position:relative;bottom:0;left:0;width:100%;height:100%}
 .home--tabs .tabTitle .title a{display:block;padding:10px 50px 10px 30px;position:relative}
 .home--tabs .tabTitle .title a:before{content:"";display:block;width:0;height:100%;-webkit-transition:all ease .3s;transition:all ease .3s;position:absolute;top:0;left:0;z-index:1}

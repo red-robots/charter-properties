@@ -803,6 +803,9 @@ body.home {
       font-size: 23px;
       font-weight: 600;
       line-height: 1.3;
+      p:last-child {
+        margin-bottom: 0;
+      }
     }
     @include animateThis(1s);
     &.active {
@@ -811,7 +814,7 @@ body.home {
       bottom: 50px;
       right: 0;
       background: #FFF;
-      padding: 15px;
+      padding: 20px;
 
       font-weight: 500;
       font-size: 16px;

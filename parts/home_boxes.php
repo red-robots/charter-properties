@@ -25,8 +25,8 @@
       </div>
       <?php } ?>
 
-      <?php if ($hb['title'] && $buttonLink) { ?>
-      <div class="button"><a href="<?php echo $buttonLink ?>" target="<?php echo $buttonTarget ?>" class="button"><?php echo $hb['title']?></a></div> 
+      <?php if ($buttonText && $buttonLink) { ?>
+      <div class="button"><a href="<?php echo $buttonLink ?>" target="<?php echo $buttonTarget ?>" class="button"><?php echo $buttonText?></a></div> 
       <?php } ?>
     </div>
   </div>  
