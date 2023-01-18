@@ -251,6 +251,153 @@ function has_job_list() {
   return ($result) ? true : false;
 }
 
+function extract_map_id($shortcode) {
+  if( empty($shortcode) ) return '';
+  $shortcode = str_replace('[','',$shortcode);
+  $shortcode = str_replace(']','',$shortcode);
+  $parts = explode("wpgmza",$shortcode);
+  $id = '';
+  if($parts && array_filter($parts)) {
+      foreach(array_filter($parts) as $p) {
+          if( $str = array_filter(explode("id=",$p)) ) {
+              foreach($str as $s) {
+                $s = string_cleaner($s);
+                $id = preg_replace('/[^A-Za-z0-9\-]/', '', $s);
+              }
+          }
+          
+      }
+  }
+  return $id;
+}
+
+function get_marker_listing($map_shortcode) {
+  global $wpdb;
+  $listing = array();
+  if( $map_id = extract_map_id($map_shortcode) ) {
+    $prefix = $wpdb->prefix;
+    $table = $prefix . 'wpgmza';
+    $query = "SELECT * FROM  $table WHERE map_id=" . $map_id . " ORDER BY title ASC";
+    $result = $wpdb->get_results($query);
+    if($result) {
+      //echo "<pre>";
+      foreach($result as $row) {
+        $id = $row->id;
+        $icon = ( isset($row->icon) && $row->icon ) ? @json_decode($row->icon) : '';
+        $row->icon = ( isset($icon->url) && $icon->url ) ? $icon->url : '';
+        $cat_ids = get_map_location_category($id);
+        $row->categories = array();
+        $custom_fields = get_location_custom_fields($id);
+        $row->custom_fields = ($custom_fields) ? $custom_fields : '';
+        if( $cat_ids ) {
+          foreach($cat_ids as $c) {
+            $catid = $c->category_id;
+            if( $cat = get_map_category($catid) ) {
+              $arg = new stdClass();
+              $catIcon = ($cat->category_icon) ? @json_decode($cat->category_icon) : '';
+              $arg->category_id = $catid;
+              $arg->category_name = $cat->category_name;
+              $arg->category_icon = ( isset($catIcon->url) && $catIcon->url ) ? $catIcon->url : '';
+              $row->categories[] = $arg;
+            }
+          }        
+        } 
+        $listing[] = $row;
+      }
+      //echo "</pre>";
+    }
+  }
+  return $listing;
+}
+
+function get_map_location_category($marker_id) {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $table = $prefix . 'wpgmza_markers_has_categories';
+  $query = "SELECT category_id FROM  $table WHERE marker_id=" . $marker_id;
+  $result = $wpdb->get_results($query);
+  return ($result) ? $result : '';
+}
+
+function get_map_category($catid,$field=null) {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $table = $prefix . 'wpgmza_categories';
+  if($field) {
+    $query = "SELECT $field FROM  $table WHERE id=" . $catid;
+    $result = $wpdb->get_row($query);
+    return ($result) ? $result->$field : '';
+  } else {
+    $query = "SELECT * FROM  $table WHERE id=" . $catid;
+    $result = $wpdb->get_row($query);
+    return ($result) ? $result : '';
+  }
+}
+
+function get_map_category_list() {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $markers = $prefix . 'wpgmza';
+  $categories = $prefix . 'wpgmza_categories';
+  $relation = $prefix . 'wpgmza_markers_has_categories';
+  $query = "SELECT cat.id AS category_id, cat.category_name FROM  $relation rel, $markers marker, $categories cat 
+            WHERE marker.id=rel.marker_id AND rel.category_id=cat.id GROUP BY cat.id ORDER BY cat.id ASC";
+  $result = $wpdb->get_results($query);
+  return ($result) ? $result : '';
+}
+
+function get_location_custom_fields($id) {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $table1 = $prefix . 'wpgmza_markers_has_custom_fields';
+  $table2 = $prefix . 'wpgmza_custom_fields';
+  $query = "SELECT  t1.*,t2.name,t2.icon AS field_icon, t2.stack_order FROM  $table1 t1, $table2 t2 WHERE t1.field_id=t2.id 
+            AND t1.object_id=" . $id;
+  $result = $wpdb->get_results($query);
+  return ($result) ? $result : '';
+}
+
+function get_location_division($locationID) {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $result = array();
+  if( $locationID ) {
+    $custom_fields = get_location_custom_fields($locationID);
+    if($custom_fields) {
+      foreach($custom_fields as $c) {
+        $field_name = sanitize_title($c->name);
+        if($field_name=='division-url') {
+          $field_value = $c->value;
+          if( $field_value && is_numeric($field_value) ) {
+            $taxonomy = 'divisions';
+            $query = "SELECT * FROM " . $prefix . "terms WHERE term_id=".$field_value;
+            $result = $wpdb->get_row($query);
+            if($result) {
+              $term_id = $result->term_id;
+              $term_slug = $result->slug;
+              
+              $term_link = get_site_url() . '/' . $taxonomy . '/' . $term_slug . '/';
+              $result->term_link = $term_link;
+            }
+          }
+        }
+      }
+    }
+  }
+  return ($result) ? $result : '';
+}
+
+function get_map_location_data($id) {
+  global $wpdb;
+  $prefix = $wpdb->prefix;
+  $query = "SELECT * FROM " . $prefix . "wpgmza WHERE id=" . $id; 
+  $result = $wpdb->get_row($query);
+  if($result) {
+
+  }
+  return $result;
+}
+
 
 function page_has_hero() {
   $banner = get_field("banner");
@@ -710,9 +857,8 @@ function communities_tabs_shortcode_func( $atts ) {
     </div>   
     <?php } ?>
 
-    <?php 
-    //CAROUSEL  
-    echo '<div class="carousel-communities-wrap"><div id="communities_data" class="wrapper">' . get_communities_data($current_term,$post_type,$taxonomy,$communityType) . '</div><div id="customCommunitiesNav"><a href="javascript:void(0)" data-action=".owl-prev" class="customNav previous"><span></span></a><a href="javascript:void(0)" data-action=".owl-next" class="customNav next"><span></span></a></div></div>';
+    <?php  
+    echo get_communities_data($current_term,$post_type,$taxonomy,$communityType);
     $output = ob_get_contents();
     ob_end_clean();
     return $output;
@@ -723,7 +869,6 @@ function get_communities_data($term_slug,$post_type,$taxonomy,$communityType) {
   $items = query_communities_terms($term_slug,$post_type,$taxonomy);
   $locationItems = array();
   $totalUnits = 0;
-  ob_start();
   if($items) {
     foreach($items as $e) {
       $postid = $e->ID;
@@ -744,7 +889,7 @@ function get_communities_data($term_slug,$post_type,$taxonomy,$communityType) {
   $locationCount = ($items) ? count($items) : '0';
   $countUnits = ($totalUnits>0) ? number_format($totalUnits) : '0';
   if($items) { ?>
-    <div class="communities-tab-info"> <span class="first"><?php echo $communityType; ?>: <strong><?php echo $countStats; ?></strong></span><span>Locations: <strong><?php echo $locationCount; ?></strong></span><span>Total Units: <strong><?php echo $countUnits; ?></strong></span> </div> <div id="carousel-communities" class="owl-carousel owl-theme"> <?php foreach ($items as $e) { $postid = $e->ID; $title = $e->post_title; $units = get_field('total_units',$postid); $term = get_the_terms($postid,'community-location'); $termName = ''; if($term) { $termID = $term[0]->term_id; $termName = $term[0]->name; $termSlug = $term[0]->slug; $locationItems[$termID] = $termName; } $unit_terms = ($units && $units>1) ? $units.' units' : $units.' unit'; ?> <div class="item term-<?php echo $term_slug ?>"> <div class="inside"> <h4><?php echo $title; ?></h4> <?php if ($termName) { ?> <div class="location"><?php echo $termName ?></div> <?php } ?> <?php if ($units) { ?> <div class="units"><?php echo $unit_terms ?></div> <?php } ?> </div> </div> <?php } ?> </div>
+    <div class="carousel-communities-wrap"> <div class="wrapper"> <div class="communities-tab-info"> <span class="first"><?php echo $communityType; ?>: <strong><?php echo $countStats; ?></strong></span><span>Locations: <strong><?php echo $locationCount; ?></strong></span><span>Total Units: <strong><?php echo $countUnits; ?></strong></span> </div> <div id="carousel-communities" class="owl-carousel owl-theme"> <?php foreach ($items as $e) { $postid = $e->ID; $title = $e->post_title; $units = get_field('total_units',$postid); $term = get_the_terms($postid,'community-location'); $termName = ''; if($term) { $termID = $term[0]->term_id; $termName = $term[0]->name; $termSlug = $term[0]->slug; $locationItems[$termID] = $termName; } $unit_terms = ($units && $units>1) ? $units.' units' : $units.' unit'; ?> <div class="item term-<?php echo $term_slug ?>"> <div class="inside"> <h4><?php echo $title; ?></h4> <?php if ($termName) { ?> <div class="location"><?php echo $termName ?></div> <?php } ?> <?php if ($units) { ?> <div class="units"><?php echo $unit_terms ?></div> <?php } ?> </div> </div> <?php } ?> </div> </div> <div id="customCommunitiesNav"><a href="javascript:void(0)" data-action=".owl-prev" class="customNav previous"><span></span></a><a href="javascript:void(0)" data-action=".owl-next" class="customNav next"><span></span></a></div> </div>
   <?php }
   $output = ob_get_contents();
   ob_end_clean();
@@ -778,9 +923,9 @@ function query_communities_terms($termSlug,$post_type,$taxonomy) {
 
 
 function myfunc_register_rest_fields(){
-  register_rest_route( 'wp/v2', '/query/', array(
+  register_rest_route( 'wp/v2', '/query', array(
     'methods' => 'GET',
-    'callback' => 'get_communities_listing'
+    'callback' => 'get_communities_listing',
   ));
 }
 add_action('rest_api_init','myfunc_register_rest_fields');
@@ -791,29 +936,8 @@ function get_communities_listing(WP_REST_Request $request) {
   $communityType = $request->get_param( 'type' );
   $post_type = 'communities';
   $taxonomy = 'community-status'; 
-  $output = '';
-  ob_start();
   echo get_communities_data($termSlug,$post_type,$taxonomy,$communityType);
-  $output = ob_get_contents();
-  ob_end_clean();
-  return $output;
 }
-
-
-add_shortcode( 'testimonial_feeds', 'testimonial_feeds_shortcode_func' );
-function testimonial_feeds_shortcode_func( $atts ) {
-  // $a = shortcode_atts( array(
-  //   'numcol'=>3
-  // ), $atts );
-  
-  $output = '';
-  ob_start();
-  get_template_part('parts/testimonial_feeds',null,$a);
-  $output = ob_get_contents();
-  ob_end_clean();
-  return $output;
-}
-
 
 
 

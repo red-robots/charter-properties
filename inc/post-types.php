@@ -32,6 +32,14 @@ function js_custom_init() {
           'menu_icon' => 'dashicons-groups',
           'supports'  => array('title','editor')
         ),
+        array(
+          'post_type' => 'testimonial',
+          'menu_name' => 'Testimonials',
+          'plural'    => 'Testimonials',
+          'single'    => 'Testimonial',
+          'menu_icon' => 'dashicons-editor-quote',
+          'supports'  => array('title','editor')
+        ),
     );
     
     if($post_types) {

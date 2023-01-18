@@ -120,6 +120,9 @@ a {
   overflow-x: hidden;
   overflow-y: auto;
 }
+body.our-communities {
+  #page {margin:0 -15px;}
+}
 .flexwrap {
   @include flexgroup();
 }
@@ -150,6 +153,11 @@ a {
     @include flexgroup();
     align-items: center;
     justify-content: space-between;
+  }
+
+  .wrapper {
+    max-width: 90%;
+    width: 100%;
   }
 
   .site-logo {
@@ -1353,7 +1361,7 @@ body.home {
     }
   }
   .blocks-wrapper {
-    max-width: $wrapper;
+    max-width: 90%;
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
@@ -1509,7 +1517,7 @@ body.home {
 body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap {
   margin: 100px -20px!important;
   position: relative;
-  padding: 25px 0 30px;
+  padding: 25px 15px 45px;
   &:before {
     content: "";
     display: block;
@@ -1525,10 +1533,11 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     margin-right: -20px!important;
   }
   .wrapper {
-    max-width: $wrapper;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 30px;
+    // max-width: $wrapper;
+    // width: 100%;
+    // margin: 0 auto;
+    // padding: 0 20px;
+    padding: 0 0;
     position: relative;
     z-index: 10;
   }
@@ -1617,7 +1626,62 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       }
     }
   }
+
+  p:empty{display:none;}
+
+  #customCommunitiesNav {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 22.1vw;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      width: 50px;
+      height: 50px;
+      background: $secondary;
+      position: relative;
+      text-align: center;
+      span {
+        display: inline-block;
+        position: relative;
+        width: 15px;
+        &:before, &:after {
+          content:"";
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #FFF;
+          position: absolute;
+        }
+      }
+      &.previous {
+        margin-right: 10px;
+      }
+      &.previous span {
+        &:before {
+          transform: translateY(8px) rotate(35deg);
+        }
+        &:after {
+          transform: rotate(-40deg);
+        }
+      }
+      &.next span {
+        &:before {
+          transform: translateY(8px) rotate(-35deg);
+        }
+        &:after {
+          transform: rotate(40deg);
+        }
+      }
+      &:hover {
+        background: tint($secondary,30%);
+      }
+    }
+  }
 }
+
+#main p:empty(display:none)
 
 
 #pagination {
@@ -1695,6 +1759,166 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     &:before {
       display: none;
     }
+  }
+}
+
+.wp-block-group.alignwide {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.wp-block-group.testimonials {
+  padding: 50px 0;
+  min-height: 20em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  .wp-block-group__inner-container {
+
+  }
+  .testimonials-swiper {
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    .swiper-slide {
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      .inner {
+        @include animateThis(1s);
+      }
+      .author span {
+        opacity: 0;
+        transition: all ease .3s;
+        transition-delay:0.6s;
+        margin-top: 50px;
+      }
+      &.swiper-slide-active {
+        height: auto;
+        visibility: visible;
+        .inner {
+          @include animateEffect(fadeIn);
+        }
+        .author span {
+          opacity: 1;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  .testimonial {
+    margin: 20px auto 50px;
+    position: relative;
+    color: $primary;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+    text-align: center;
+    .author {
+      margin-top: 50px;
+      position: relative;
+      text-align: center;
+      .customNav {
+        display: inline-block;
+        width: 250px;
+        height: 80px;
+        color: #FFF;
+        position: relative;
+        background: $primary;
+        span {
+          width: 100%;
+          text-align: center;
+          display: block;
+          color: #FFF;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          text-transform: uppercase;
+          font-family: $font_secondary;
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 1.2;
+        }
+        a {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background: $secondary;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          &:before, &:after {
+            content:"";
+            display: block;
+            width: 48%;
+            height: 2px;
+            background: #FFF;
+            position: absolute;
+            top: 16px;
+          }
+          &.prev {
+            left: -25px;
+            &:before, &:after {
+              left: 11px;
+            }
+            &:before {
+              transform: rotate(-37deg);
+            }
+            &:after {
+              transform: translateY(14px) rotate(37deg);
+            }
+          }
+          &.next {
+            right: -25px;
+            &:before, &:after {
+              right: 11px;
+            }
+            &:before {
+              transform: rotate(37deg);
+            }
+            &:after {
+              transform: translateY(14px) rotate(-37deg);
+            }
+            
+          }
+        }
+      }
+    }
+    p:empty{
+      display: none;
+    }
+  }
+  .owl-dots{
+    display: none;
+  }
+  .owl-nav {
+    display: none;
+    width: 200px;
+    height: 70px;
+    color: #FFF;
+    position: relative;
+    margin: 30px auto 0;
+    background: $primary;
+    &.show {
+      display: block;
+    }
+  }
+  .owl-prev,
+  .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .owl-prev {
+    left: 0;
+  }
+  .owl-next {
+    right: 0;
   }
 }
 

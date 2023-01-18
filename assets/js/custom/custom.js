@@ -193,36 +193,112 @@ jQuery(document).ready(function ($) {
     },
   });
 
+  /* Testimonials */
+  var testimonials_swiper = new Swiper(".testimonials-swiper", {
+    effect: 'fade', 
+    loop: true,
+    speed: 4000,
+    autoplay: {
+      delay: 4000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper_next",
+      prevEl: ".swiper_prev",
+    },
+  });
+
 
   /* Home Carousel */
-  var communitiesCount = $('#carousel-communities .item').length;
-  if(communitiesCount>3) {
-    $('#carousel-communities').owlCarousel({
-      loop:true,
-      margin:0,
-      nav:true,
-      responsiveClass:true,
-      responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:4
+  communitiesCarousel();
+  function communitiesCarousel() {
+    var communitiesCount = $('#carousel-communities .item').length;
+    if(communitiesCount>3) {
+      $('#carousel-communities').owlCarousel({
+        loop:true,
+        margin:0,
+        nav:true,
+        responsiveClass:true,
+        responsive:{
+          0:{
+              items:1
+          },
+          600:{
+              items:3
+          },
+          1000:{
+              items:4
+          }
         }
-      }
-    });
-  } 
-  else {
-    $('#carousel-communities').owlCarousel({
-      loop:false,
-      margin:0,
-      nav:false,
-      items: 4
-    });
+      });
+    } 
+    else {
+      $('#carousel-communities').owlCarousel({
+        loop:false,
+        margin:0,
+        nav:false,
+        items: 4
+      });
+    }
   }
   
+
+  /* Communities Carousel */
+  $(document).on('click','#customCommunitiesNav a',function(){
+    var action = $(this).attr('data-action');
+    $('.carousel-communities-wrap ' + action).trigger('click');
+  });
+
+  /* Communities Tab */
+  $(document).on('click','.bottom-post-terms .termInfo a',function(e){
+    e.preventDefault();
+    var action = $(this).attr('data-action');
+    var termid = $(this).attr('data-termid');
+    var termslug = $(this).attr('data-slug');
+    var parent = $(this).parent();
+    $('.bottom-post-terms .termInfo').not(parent).removeClass('active');
+    $(this).parent().addClass('active');
+    var type = $(this).text().trim();
+    
+    // $.ajax({
+    //   url:frontajax.jsonUrl+'/top?exclude='+excludeIds
+    // }).done(function(response){
+    // });
+    $.get(siteURL + '/wp-json/wp/v2/query/?termslug='+termslug+'&type='+type,function(data){
+      if(data) {
+        //var htmlData = $.parseHTML(data);
+        $('#communities_data').html(data);
+        communitiesCarousel();
+      }
+    });
+  });
+
+
+  /* TESTIMONIALS CAROUSEL */
+  // var testimonials = $('#testimonials-carousel')
+  // testimonials.owlCarousel({
+  //   loop: true,
+  //   items: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 4000,
+  //   smartSpeed: 4000,
+  //   center: true,
+  //   nav: true,
+  //   dots:false
+  // });
+
+  // testimonials.on('changed.owl.carousel', function(event) {
+  //   var author = $('.owl-item.active').find('.author').text();
+  // });
+
+  // $('.testimonialNav a').on('click',function(e){
+  //   e.preventDefault();
+  //   var action = $(this).attr('data-action');
+  //   $('#testimonials-carousel ' + action).trigger('click');
+  // });
+
 
 }); 
