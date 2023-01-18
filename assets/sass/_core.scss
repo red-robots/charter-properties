@@ -1323,6 +1323,7 @@ body.home {
 .wp-block-group.communities {
   position: relative;
   margin-top: 35px;
+  overflow: hidden;
 }
 .communities-feeds {
   position: relative;
@@ -1522,20 +1523,26 @@ body.home {
   }
 }
 body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap {
-  margin: 100px -20px!important;
+  width: 100%;
+  float: left;
+  margin: 100px 0!important;
   position: relative;
   padding: 25px 15px 45px;
+  @include tab {
+    margin: 100px -10px!important;
+  }
   &:before {
     content: "";
     display: block;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     background: $teal;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -5px;
     @include tab {
       width: 80vw;
+      left: 0;
     }
   }
   #carousel-communities {
@@ -1656,7 +1663,7 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     @include tab {
       bottom: -50px;
       width: 22.1vw;
-      padding-left: 4px;
+      padding-left: 2.8vw;
       text-align: unset;
     }
     a {

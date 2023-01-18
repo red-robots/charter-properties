@@ -1592,7 +1592,7 @@ body.home #content #intro{margin-top:-70px}
 .image-content{padding:0 0 !important;position:relative}
 .image-content .wp-block-column{position:relative;z-index:10}
 .image-content .textcol{padding-left:10vw;padding-right:10vw}
-.wp-block-group.communities{position:relative;margin-top:35px}
+.wp-block-group.communities{position:relative;margin-top:35px;overflow:hidden}
 .communities-feeds{position:relative}
 .communities-feeds .arrowdiv{position:absolute;top:-45px;left:0;width:100%;text-align:center}
 .communities-feeds .arrowdiv .arrdown{display:inline-block;text-decoration:none;width:50px;height:50px;background:#bf7b2b;position:relative}
@@ -1623,8 +1623,8 @@ body.home #content #intro{margin-top:-70px}
 .bottom-post-terms .termInfo.active a{color:#073253;background-color:#bf7b2b}
 .bottom-post-terms .termInfo:not(.active) a:hover{background-color:rgba(191,123,43,.1);color:#bf7b2b}
 .bottom-post-terms.full .termInfo,.bottom-post-terms.full .termInfo a,.bottom-post-terms.count-1 .termInfo,.bottom-post-terms.count-1 .termInfo a{display:block;width:100%}
-body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap{margin:100px -20px !important;position:relative;padding:25px 15px 45px}
-body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap:before{content:"";display:block;width:100%;height:100%;background:#6aa3a1;position:absolute;top:0;left:0}
+body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap{width:100%;float:left;margin:100px 0 !important;position:relative;padding:25px 15px 45px}
+body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap:before{content:"";display:block;width:100vw;height:100%;background:#6aa3a1;position:absolute;top:0;left:-5px}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap .wrapper{padding:0;position:relative;z-index:10}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap .owl-item{margin:0 0 !important;padding:20px}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap .item{text-align:center;background:#fff;color:#073253;min-height:12em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
@@ -1748,10 +1748,11 @@ h2{font-size:2.5rem}
 .communities-feeds .has_photo .photo{width:48%;margin-bottom:0}
 .communities-feeds .has_photo .info{width:48%}
 .communities-feeds .block.even .inner{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
-body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap:before{width:80vw}
+body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap{margin:100px -10px !important}
+body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap:before{width:80vw;left:0}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap #carousel-communities{margin-left:-20px !important;margin-right:-20px !important}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap .owl-dots{display:block}
-body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap #customCommunitiesNav{bottom:-50px;width:22.1vw;padding-left:4px;text-align:unset}
+body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap #customCommunitiesNav{bottom:-50px;width:22.1vw;padding-left:2.8vw;text-align:unset}
 .communities-tab-info{padding-left:0;padding-right:0;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
 .communities-tab-info span{margin-top:0;margin-bottom:0}
 .site-footer .flexcol.left{text-align:left;width:350px;padding-right:5vw;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
