@@ -1622,7 +1622,7 @@ body.home #content #intro{margin-top:-70px}
 .bottom-post-terms .termInfo a{display:block;text-align:center;color:#6aa3a1;font-family:"Josefin Sans",sans-serif;font-size:16px;font-weight:700;line-height:1.2;text-transform:uppercase;padding:30px 30px 25px;text-decoration:none}
 .bottom-post-terms .termInfo.active a{color:#073253;background-color:#bf7b2b}
 .bottom-post-terms .termInfo:not(.active) a:hover{background-color:rgba(191,123,43,.1);color:#bf7b2b}
-.bottom-post-terms.count-1 .termInfo,.bottom-post-terms.count-1 .termInfo a{display:block;width:100%}
+.bottom-post-terms.full .termInfo,.bottom-post-terms.full .termInfo a,.bottom-post-terms.count-1 .termInfo,.bottom-post-terms.count-1 .termInfo a{display:block;width:100%}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap{margin:100px -20px !important;position:relative;padding:25px 15px 45px}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap:before{content:"";display:block;width:100%;height:100%;background:#6aa3a1;position:absolute;top:0;left:0}
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap .wrapper{padding:0;position:relative;z-index:10}

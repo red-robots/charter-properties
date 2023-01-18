@@ -1513,6 +1513,7 @@ body.home {
       color: $secondary;
     }
   }
+  &.full,
   &.count-1 {
     .termInfo, .termInfo a {
       display: block;

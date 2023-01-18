@@ -277,4 +277,10 @@ jQuery(document).ready(function ($) {
   //   var action = $(this).attr('data-action');
   //   $('#testimonials-carousel ' + action).trigger('click');
   // });
+
+  if ($('.bottom-post-terms .termTab').length) {
+    if ($('.bottom-post-terms .termTab').length == 1) {
+      $('.bottom-post-terms').addClass('full');
+    }
+  }
 });
