@@ -1662,7 +1662,7 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .communities-tab-info span.first:before{display:none}
 .wp-block-group.alignwide{max-width:90%;width:100%;margin:0 auto;padding-left:20px;padding-right:20px}
 .wp-block-group.testimonials{padding:50px 0;min-height:20em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
-.wp-block-group.testimonials .testimonials-swiper{max-width:800px;width:100%;overflow:hidden;margin:0 auto;padding:0 20px}
+.wp-block-group.testimonials .testimonials-swiper{max-width:900px;width:100%;overflow:hidden;margin:0 auto;padding:0 20px}
 .wp-block-group.testimonials .testimonials-swiper .swiper-slide{height:0;overflow:hidden;visibility:hidden}
 .wp-block-group.testimonials .testimonials-swiper .swiper-slide .inner{-webkit-animation-duration:1s;animation-duration:1s}
 .wp-block-group.testimonials .testimonials-swiper .swiper-slide .author span{opacity:0;-webkit-transition:all ease .3s;transition:all ease .3s;-webkit-transition-delay:.6s;transition-delay:.6s;margin-top:50px}
