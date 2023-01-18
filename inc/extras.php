@@ -688,9 +688,9 @@ function communities_tabs_shortcode_func( $atts ) {
     $current_term = (isset($_GET['tab']) && $_GET['tab']) ? $_GET['tab'] : 'past';
     $communityType = '';
     ob_start();
-    if($terms) { ?>
+    if($terms) {  $count = count($terms); ?>
     <div class="bottom-post-terms-wrap wrapper sm">
-      <div class="bottom-post-terms">
+      <div class="bottom-post-terms count-<?php echo $count?>">
       <?php $i=1; foreach($terms as $term) {
         $termSlug = $term->slug;
         $termName = $term->name;

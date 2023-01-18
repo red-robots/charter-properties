@@ -1513,6 +1513,12 @@ body.home {
       color: $secondary;
     }
   }
+  &.count-1 {
+    .termInfo, .termInfo a {
+      display: block;
+      width: 100%;
+    }
+  }
 }
 body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap {
   margin: 100px -20px!important;
@@ -1521,16 +1527,22 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   &:before {
     content: "";
     display: block;
-    width: 80vw;
+    width: 100%;
     height: 100%;
     background: $teal;
     position: absolute;
     top: 0;
     left: 0;
+    @include tab {
+      width: 80vw;
+    }
   }
   #carousel-communities {
-    margin-left: -20px!important;
-    margin-right: -20px!important;
+    
+    @include tab {
+      margin-left: -20px!important;
+      margin-right: -20px!important;
+    }
   }
   .wrapper {
     // max-width: $wrapper;
@@ -1610,6 +1622,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     width: 100%;
     z-index: 1000;
     padding: 0 20px;
+    display: none;
+    @include tab {
+      display: block;
+    }
     button {
       display: inline-block;
       webkit-appearance:none;
@@ -1632,8 +1648,16 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   #customCommunitiesNav {
     position: absolute;
     right: 0;
-    bottom: -50px;
-    width: 22.1vw;
+    bottom: -23px;
+    width: 100%;
+    padding-left: 20px;
+    text-align: center;
+    @include tab {
+      bottom: -50px;
+      width: 22.1vw;
+      padding-left: 4px;
+      text-align: unset;
+    }
     a {
       display: inline-block;
       text-decoration: none;
@@ -1727,6 +1751,14 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   display: flex;
   flex-wrap: wrap;
   margin: 10px 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  @include tab {
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
   span {
     display: inline-block;
     text-transform: uppercase;
@@ -1738,6 +1770,12 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     position: relative;
     padding-left: 13px;
     margin-left: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    @include tab {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
     &:before {
       content:"";
       display: block;
@@ -1776,14 +1814,12 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  .wp-block-group__inner-container {
-
-  }
   .testimonials-swiper {
     max-width: 800px;
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
+    padding: 0 20px;
     .swiper-slide {
       height: 0;
       overflow: hidden;
@@ -1919,6 +1955,19 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
   .owl-next {
     right: 0;
+  }
+
+  @include max($tabwidth) {
+    max-width: 100%!important;
+    width: 100%!important;
+    .testimonials-swiper {
+      max-width: 85vw!important;
+      width: 100%!important;
+    }
+    .swiper-slide {
+      max-width: 100%!important;
+      width: 100%!important;
+    }
   }
 }
 
