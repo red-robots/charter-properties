@@ -442,10 +442,23 @@ html  body.logged-in.admin-bar {
 }
 
 .subpage-banner {
+  height: 350px;
+  position: relative;
   .wrapper {
     position: relative;
     padding: 0 0;
+    height: 100%;
     max-width: $wrapper;
+  }
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .banner-text {
     width: 100%;
@@ -484,6 +497,26 @@ html  body.logged-in.admin-bar {
   img {
     width: 100%;
     height: auto;
+  }
+  .banner-sm-text {
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    z-index: 10;
+    padding: 0 20px;
+    .wrapper {
+      background: $primary;
+      padding: 20px 15px;
+      color: $teal;
+      font-family: $font_secondary;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   }
 }
 #main,
@@ -1979,6 +2012,151 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
 }
 
+.teamfeeds {
+  &.wrapper {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  h2.has-text-align-center  {
+    width: 100%;
+    float: left;
+    margin-top: 100px;
+  }
+  .flexwrap {
+    @include flexgroup();
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .team {
+    padding: 20px;
+    position: relative;
+    width: 33.333%;
+    @include tab {
+      width: 100%;
+    }
+    .inner {
+      position: relative;
+      width: 100%;
+      float: left;
+      a {
+        display: block;
+        width: 100%;
+        float: left;
+        text-decoration: none;
+        position: relative;
+      }
+      p:empty {
+        display: none;
+      }
+    }
+    figure {
+      margin: 0 0;
+      width: 100%;
+      float: left;
+      background-color: #CCC;
+      background-repeat: no-repeat;
+      background-size: cover;
+      img {
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+    }
+    .info {
+      position: absolute;
+      left: 0;
+      bottom: 20px;
+      z-index: 5;
+      background: #FFF;
+      font-size: 15px;
+      line-height: 1.3;
+      padding: 20px 15px;
+      width: calc(100% - 40px);
+      margin-bottom: 19px;
+      p {
+        font-weight: 500;
+      }
+      p:last-child {display: none;}
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0;
+      color: $teal;
+    }
+    .jobtitle {
+      font-size: 14px;
+      line-height: 1.3;
+      color: $primary;
+    }
+    &.other-info {
+      width: 65%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .inner {
+        font-family: $font_secondary;
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: $gray2;
+        a {
+          color: $gray2;
+        }
+      }
+      a {
+        display: block;
+        text-decoration: none;
+      }
+
+    }
+  }
+
+  .team {
+    width: 100%;
+    @include tab {
+      width: 33.333%;
+    }
+  }
+  .slideBtn {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+    z-index: 15;
+    background: $secondary;
+    color: transparent;
+    text-transform: uppercase;
+    &:before, &:after {
+      content:"";
+      display: block;
+      width: 50%;
+      height: 2px;
+      background: #FFF;
+      position: absolute;
+      top: 4px;
+      left: 13px;
+    }
+    &:before {
+      transform: translateY(10px) rotate(40deg);
+    }
+    &:after {
+      transform: translateY(22px) rotate(-40deg);
+    }
+  }
+
+}
+
+.team-page {
+  margin-top: 100px;
+}
+
 /* FOOTER */
 .site-footer {
   font-family: $font_secondary;
@@ -2124,6 +2302,16 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       .widget, .widget * { font-size: 17px; }
       .widget { width: 50%; font-size: 17px; }
     }
+  }
+
+  span.slideBtn {
+    display: inline-block;
+    width: 15vw;
+    height: 100px;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    background: $secondary;
   }
 
   .copyright {

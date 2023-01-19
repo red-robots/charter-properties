@@ -8,7 +8,7 @@ $team = new WP_Query($args);
 if ( $team->have_posts() ) { ?>
 <section class="section team-list cf">
 	<div class="wrapper">
-		<div class="flexwrap hexagons-large">
+		<div class="flexwrap">
 
 				<?php while ( $team->have_posts() ) : $team->the_post();
 				$id = get_the_ID();

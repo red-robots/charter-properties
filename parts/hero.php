@@ -38,9 +38,10 @@
   <?php } ?>
 <?php } else { ?>
 
-  <?php if ( $banner = get_field('banner') ) { 
+  <?php if ( $banner = get_field('banner') ) {
+    global $post; 
+    $subtext = get_field('banner_text');
     $page_title = get_the_title();
-    global $post;
     $postName = (isset($post->post_name) && $post->post_name) ? $post->post_name : '';
     if($postName=='our-communities') {
       $current_term = (isset($_GET['term']) && $_GET['term']) ? ucwords($_GET['term']) : '';
@@ -51,10 +52,15 @@
   ?>
   <div class="subpage-banner">
     <div class="wrapper">
+      <div class="banner-image" style="background-image:url(<?php echo $banner['url'] ?>)"></div>
       <div class="banner-text">
         <h1 class="hero-title"><?php echo $page_title; ?></h1>
       </div>
-      <img src="<?php echo $banner['url'] ?>" alt="<?php echo $banner['title'] ?>">
+      <?php if ($subtext) { ?>
+      <div class="banner-sm-text">
+        <div class="wrapper"><?php echo $subtext ?></div>
+      </div>  
+      <?php } ?>
     </div>
   </div> 
   <?php } ?>

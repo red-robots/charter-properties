@@ -306,4 +306,16 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  /* Banner bottom text */
+  adjustBannerText();
+  $(window).on('resize orientationchange',function(){
+    adjustBannerText();
+  });
+  function adjustBannerText() {
+    if( $('.banner-sm-text').length ) {
+      var bannerHeight = $('.banner-sm-text').height() / 2;
+      $('.banner-sm-text').css('bottom','-'+bannerHeight+'px');
+    }
+  }
+  
 }); 

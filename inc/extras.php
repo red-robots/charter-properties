@@ -815,5 +815,17 @@ function testimonial_feeds_shortcode_func( $atts ) {
 }
 
 
-
+add_shortcode( 'team_feeds', 'team_feeds_shortcode_func' );
+function team_feeds_shortcode_func( $atts ) {
+  $a = shortcode_atts( array(
+    'numcol'=>3
+  ), $atts );
+  $numcol = ($a['numcol']) ? $a['numcol'] : 3;
+  $output = '';
+  ob_start();
+  get_template_part('parts/team_feeds',null,$a);
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
+}
 

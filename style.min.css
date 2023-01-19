@@ -1469,11 +1469,15 @@ body.mobile-menu-open #site-navigation{right:0;z-index:9999}
 .banner-wrapper .banner .slideImage{width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#ccc}
 .banner-wrapper .banner .caption{width:100%;height:100%;position:absolute;top:0;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:rgba(0,0,0,.6);text-align:center;padding:20px}
 .banner-wrapper .banner .caption .text{font-family:"Josefin Sans",sans-serif;font-size:3.5vh;font-weight:600;line-height:1.2;text-transform:uppercase;color:#fff;max-width:750px;width:100%}
-.subpage-banner .wrapper{position:relative;padding:0;max-width:calc(90% - 40px)}
+.subpage-banner{height:350px;position:relative}
+.subpage-banner .wrapper{position:relative;padding:0;height:100%;max-width:calc(90% - 40px)}
+.subpage-banner .banner-image{width:100%;height:100%;position:absolute;top:0;left:0;background-size:cover;background-position:center;background-repeat:no-repeat}
 .subpage-banner .banner-text{width:100%;height:100%;position:absolute;top:0;left:0;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .subpage-banner .banner-text:before{content:"";display:block;width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(7,50,83,.6)}
 .subpage-banner .banner-text h1{font-size:2.5rem;font-weight:700;text-transform:uppercase;line-height:1.2;color:#fff;position:relative;z-index:10}
 .subpage-banner img{width:100%;height:auto}
+.subpage-banner .banner-sm-text{width:100%;position:absolute;bottom:-25px;left:0;z-index:10;padding:0 20px}
+.subpage-banner .banner-sm-text .wrapper{background:#073253;padding:20px 15px;color:#6aa3a1;font-family:"Josefin Sans",sans-serif;font-size:16px;font-weight:600;line-height:1.2;text-align:center;text-transform:uppercase;letter-spacing:1px}
 body.home #content #intro{margin-top:-70px}
 .medium-width{max-width:850px;width:100%;margin:0 auto}
 .slideshow .swiper,.slideshow .swiper-wrapper,.slideshow .swiper-slide{height:100%}
@@ -1690,6 +1694,30 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .wp-block-group.testimonials .owl-prev,.wp-block-group.testimonials .owl-next{position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}
 .wp-block-group.testimonials .owl-prev{left:0}
 .wp-block-group.testimonials .owl-next{right:0}
+.teamfeeds.wrapper{padding-top:40px;padding-bottom:80px}
+.teamfeeds h2.has-text-align-center{width:100%;float:left;margin-top:100px}
+.teamfeeds .flexwrap{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin-left:-20px;margin-right:-20px}
+.teamfeeds .team{padding:20px;position:relative;width:33.333%}
+.teamfeeds .team .inner{position:relative;width:100%;float:left}
+.teamfeeds .team .inner a{display:block;width:100%;float:left;text-decoration:none;position:relative}
+.teamfeeds .team .inner p:empty{display:none}
+.teamfeeds .team figure{margin:0;width:100%;float:left;background-color:#ccc;background-repeat:no-repeat;background-size:cover}
+.teamfeeds .team figure img{width:100%;height:auto;float:left}
+.teamfeeds .team .info{position:absolute;left:0;bottom:20px;z-index:5;background:#fff;font-size:15px;line-height:1.3;padding:20px 15px;width:calc(100% - 40px);margin-bottom:19px}
+.teamfeeds .team .info p{font-weight:500}
+.teamfeeds .team .info p:last-child{display:none}
+.teamfeeds .team h4{font-size:18px;font-weight:600;line-height:1.1;text-transform:uppercase;letter-spacing:1px;margin:0;color:#6aa3a1}
+.teamfeeds .team .jobtitle{font-size:14px;line-height:1.3;color:#073253}
+.teamfeeds .team.other-info{width:65%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.teamfeeds .team.other-info .inner{font-family:"Josefin Sans",sans-serif;font-size:4rem;font-weight:600;line-height:1.2;text-transform:uppercase;color:#cfd2d3}
+.teamfeeds .team.other-info .inner a{color:#cfd2d3}
+.teamfeeds .team.other-info a{display:block;text-decoration:none}
+.teamfeeds .team{width:100%}
+.teamfeeds .slideBtn{display:block;width:40px;height:40px;position:absolute;right:0;bottom:30px;z-index:15;background:#bf7b2b;color:transparent;text-transform:uppercase}
+.teamfeeds .slideBtn:before,.teamfeeds .slideBtn:after{content:"";display:block;width:50%;height:2px;background:#fff;position:absolute;top:4px;left:13px}
+.teamfeeds .slideBtn:before{-webkit-transform:translateY(10px) rotate(40deg);transform:translateY(10px) rotate(40deg)}
+.teamfeeds .slideBtn:after{-webkit-transform:translateY(22px) rotate(-40deg);transform:translateY(22px) rotate(-40deg)}
+.team-page{margin-top:100px}
 .site-footer{font-family:"Josefin Sans",sans-serif;background:#cfd2d3;border-bottom:5px solid #bf7b2b}
 .site-footer .wrapper{padding-top:70px;padding-bottom:60px}
 .site-footer .flexcol{width:100%;position:relative;color:#073253}
@@ -1711,6 +1739,7 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .site-footer .bottom{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;text-align:center}
 .site-footer .bottom .bcol{width:100%;color:#073253;text-transform:uppercase;font-size:15px;font-weight:normal;letter-spacing:1px}
 .site-footer .widget-1,.site-footer .widget-2{width:100%}
+.site-footer span.slideBtn{display:inline-block;width:15vw;height:100px;position:absolute;right:0;bottom:20px;background:#bf7b2b}
 .site-footer .copyright{font-size:13px}
 .site-footer .footer-partners{margin-bottom:10px}
 .site-footer .footer-partners a{display:inline-block;text-decoration:none}
@@ -1755,6 +1784,8 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignfull)) .carousel-communities-wrap #customCommunitiesNav{bottom:-50px;width:22.1vw;padding-left:2.8vw;text-align:unset}
 .communities-tab-info{padding-left:0;padding-right:0;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
 .communities-tab-info span{margin-top:0;margin-bottom:0}
+.teamfeeds .team{width:100%}
+.teamfeeds .team{width:33.333%}
 .site-footer .flexcol.left{text-align:left;width:350px;padding-right:5vw;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .site-footer .flexcol.right{width:calc(100% - 350px);margin-left:-20px;margin-right:-20px;padding-top:20px;padding-bottom:20px;padding-left:4vw;margin-top:0;border-left:1px solid #fff;border-top:0}
 .site-footer .widget{width:50%;padding:10px 20px}
