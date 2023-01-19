@@ -39,7 +39,7 @@ if ( $team->have_posts() ) { ?>
       </div>
 			<?php endwhile; wp_reset_postdata(); ?>
       <div class="team other-info">
-        <div class="inner">Want to be part of our team?</div>
+        <div class="inner" id="ctaBoxTeam"></div>
       </div>
 	</div>
 </div>

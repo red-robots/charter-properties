@@ -2093,10 +2093,13 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       color: $primary;
     }
     &.other-info {
-      width: 65%;
+      width: 100%;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      @include tab {
+        width: 65%;
+      }
       .inner {
         font-family: $font_secondary;
         font-size: 4rem;
@@ -2113,7 +2116,43 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
         text-decoration: none;
       }
 
+      a.wp-element-button {
+        background: $teal;
+        color: #cfd2d3;
+        display: inline-block!important;
+        width: auto;
+        padding: 15px 15px 10px;
+        font-size: 18px;
+        color: #FFF;
+        position: relative;
+        right: 0;
+        margin-top: 20px;
+        @include tab {
+          right: 9vw;
+          top: 7px;
+          margin-top: 0;
+          float: right;
+        }
+      }
     }
+    .wp-block-group.partteam {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  #ctaBoxTeam {
+    .has-x-large-font-size {
+      color: #cfd2d3;
+      padding: 15px 15px 10px;
+      font-size: 4rem!important;
+      display: inline;
+    }
+  }
+
+  .wp-element-button {
+    float: right;
+    position: relative!important;
   }
 
   .team {
@@ -2121,6 +2160,44 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     @include tab {
       width: 33.333%;
     }
+  }
+  .partteam {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 15px;
+    @include tab {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 65%;
+    }
+    h2 {
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin: 0 0;
+      color: $gray2;
+    }
+    a.wp-element-button {
+      text-decoration: none;
+      background: $teal!important;
+      color: #FFF!important;
+      padding: 15px 20px 10px;
+      text-transform: uppercase;
+      font-weight: $font_secondary;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .wp-block-buttons {
+      position: relative;
+      float: right;
+    }
+  }
+  .wp-element-button {
+    display: none;
   }
   .slideBtn {
     display: block;

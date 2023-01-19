@@ -296,5 +296,9 @@ jQuery(document).ready(function ($) {
       var bannerHeight = $('.banner-sm-text').height() / 2;
       $('.banner-sm-text').css('bottom', '-' + bannerHeight + 'px');
     }
-  }
+  } //$('.partteam').appendTo('.teamfeeds .flexwrap');
+
+
+  $('.part-team h2').appendTo('#ctaBoxTeam');
+  $('.part-team .wp-element-button').appendTo('#ctaBoxTeam');
 });

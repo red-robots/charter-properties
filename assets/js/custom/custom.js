@@ -317,5 +317,10 @@ jQuery(document).ready(function ($) {
       $('.banner-sm-text').css('bottom','-'+bannerHeight+'px');
     }
   }
-  
+
+ 
+  //$('.partteam').appendTo('.teamfeeds .flexwrap');
+  $('.part-team h2').appendTo('#ctaBoxTeam');
+  $('.part-team .wp-element-button').appendTo('#ctaBoxTeam');
+
 }); 
