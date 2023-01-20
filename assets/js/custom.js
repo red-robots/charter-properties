@@ -301,4 +301,29 @@ jQuery(document).ready(function ($) {
 
   $('.part-team h2').appendTo('#ctaBoxTeam');
   $('.part-team .wp-element-button').appendTo('#ctaBoxTeam');
+  /* Tabs */
+
+  $('.tabs .tab a').on('click', function (e) {
+    e.preventDefault();
+    var target = $(this).parent();
+    var tab = $(this).attr('data-tab');
+    $('.tabs .tab').not(target).removeClass('active');
+    target.addClass('active');
+    $('.tabtext').not(tab).removeClass('active');
+    $('.tabtext' + tab).addClass('active');
+    var tabClass = tab.replace('#', '.');
+    $('.tab-title').not(tabClass + "_title").removeClass('show');
+    $('.tab-title' + tabClass + "_title").addClass('show');
+  });
+  $(document).on('click', '.tab-title', function (e) {
+    var target = $(this).next();
+    $('.tab-title').not(this).removeClass('show');
+    $(this).addClass('show');
+    $('.tabtext').not(target).slideUp();
+    target.slideToggle();
+    target.toggleClass('active');
+    var tab = $(this).attr('data-rel');
+    $('.tabs .tab').removeClass('active');
+    $('.tabs .tab a[data-tab="' + tab + '"]').parent().addClass('active');
+  });
 });
