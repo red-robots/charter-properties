@@ -1596,14 +1596,14 @@ body.home #content #intro{margin-top:-70px}
 .image-content{padding:0 0 !important;position:relative}
 .image-content .wp-block-column{position:relative;z-index:10}
 .image-content .textcol{padding-left:10vw;padding-right:10vw}
-.wp-block-group.communities{position:relative;margin-top:35px;overflow:hidden}
+.wp-block-group.communities{position:relative;margin-top:35px}
 .communities-feeds{position:relative}
 .communities-feeds .arrowdiv{position:absolute;top:-45px;left:0;width:100%;text-align:center}
 .communities-feeds .arrowdiv .arrdown{display:inline-block;text-decoration:none;width:50px;height:50px;background:#bf7b2b;position:relative}
 .communities-feeds .arrowdiv .arrdown:before,.communities-feeds .arrowdiv .arrdown:after{content:"";display:block;width:40%;height:2px;background:#fff;position:absolute;top:24px;left:15px}
 .communities-feeds .arrowdiv .arrdown:before{-webkit-transform:translateX(-6px) rotate(50deg);transform:translateX(-6px) rotate(50deg)}
 .communities-feeds .arrowdiv .arrdown:after{-webkit-transform:translateX(6px) rotate(-50deg);transform:translateX(6px) rotate(-50deg)}
-.communities-feeds .blocks-wrapper{max-width:90%;width:100%;margin:0 auto;padding:0 20px}
+.communities-feeds .blocks-wrapper{max-width:90%;width:100%;margin:0 auto;padding:0 20px;overflow:hidden}
 .communities-feeds .block{padding:60px 0 75px;border-top:1px solid #bf7b2b}
 .communities-feeds .block:first-child{border-top:0}
 .communities-feeds .has_photo .photo{margin:0 0 70px;padding:0;position:relative;width:100%}

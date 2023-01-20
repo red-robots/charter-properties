@@ -1356,7 +1356,6 @@ body.home {
 .wp-block-group.communities {
   position: relative;
   margin-top: 35px;
-  overflow: hidden;
 }
 .communities-feeds {
   position: relative;
@@ -1399,6 +1398,7 @@ body.home {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
+    overflow: hidden;
   }
   .block {
     padding: 60px 0 75px;
