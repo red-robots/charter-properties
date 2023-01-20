@@ -1766,6 +1766,19 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .infotabs .tabtext ul{margin:0;padding:0;list-style:none}
 .infotabs .tabtext ul li{position:relative;line-height:1.3;padding-left:15px;margin:15px 0}
 .infotabs .tabtext ul li:before{content:"";display:block;width:7px;height:7px;background-image:url("images/bullet.svg");background-repeat:no-repeat;background-position:center;background-size:contain;position:absolute;top:9px;left:0}
+.wp-block-group.contactForm{padding:5vw 20px;background:#cfd2d3;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:relative;margin-bottom:80px;margin-right:6vw}
+.wp-block-group.contactForm .leftcol{background:#073253;color:#bf7b2b;padding:35px;font-family:"Josefin Sans",sans-serif;font-weight:500;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;z-index:20}
+.wp-block-group.contactForm .leftcol a{display:inline-block;text-decoration:none;color:#6aa3a1}
+.wp-block-group.contactForm .rightcol{color:#073253}
+.wp-block-group.contactForm .gform_wrapper p:empty{display:none}
+.wp-block-group.contactForm .gform_wrapper input[type=text],.wp-block-group.contactForm .gform_wrapper input[type=email],.wp-block-group.contactForm .gform_wrapper select,.wp-block-group.contactForm .gform_wrapper textarea{border:1px solid rgba(0,0,0,.8);padding:7px 5px 6px;background:#fff;font-family:"Josefin Sans",sans-serif;font-size:17px !important;font-weight:500}
+.wp-block-group.contactForm .gform_wrapper input[type=text],.wp-block-group.contactForm .gform_wrapper input[type=email],.wp-block-group.contactForm .gform_wrapper select{height:40px}
+.wp-block-group.contactForm .gform_wrapper .ginput_container{width:100%;float:left}
+.wp-block-group.contactForm .gform_wrapper .ginput_complex label{margin-bottom:0}
+.wp-block-group.contactForm .gform_wrapper .ginput_container.has_first_name.has_last_name{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.wp-block-group.contactForm .gform_wrapper .ginput_container.has_first_name.has_last_name p{width:48.5%;margin:0}
+.wp-block-group.contactForm .gform_wrapper label.gfield_label{margin:0}
+.wp-block-group.contactForm .gform_wrapper input#gform_submit_button_1{display:inline-block;padding:15px 35px;background:#6aa3a1;color:#fff;border:0}
 .site-footer{font-family:"Josefin Sans",sans-serif;background:#cfd2d3;border-bottom:5px solid #bf7b2b}
 .site-footer .wrapper{padding-top:70px;padding-bottom:60px}
 .site-footer .flexcol{width:100%;position:relative;color:#073253}
@@ -1848,6 +1861,7 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .infotabs .tabs{width:30%;display:block}
 .infotabs .tabcontent{width:70%;border-left:1px solid rgba(255,255,255,.75)}
 .infotabs .tabcontent .tab-title{display:none}
+.wp-block-group.contactForm:before{content:"";display:block;width:20%;height:100%;background:#fff;position:absolute;top:0;left:0}
 .site-footer .flexcol.left{text-align:left;width:350px;padding-right:5vw;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .site-footer .flexcol.right{width:calc(100% - 350px);margin-left:-20px;margin-right:-20px;padding-top:20px;padding-bottom:20px;padding-left:4vw;margin-top:0;border-left:1px solid #fff;border-top:0}
 .site-footer .widget{width:50%;padding:10px 20px}
@@ -1861,6 +1875,7 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .site-footer .widget-2 .widget{width:50%;font-size:17px}
 .site-footer .footer-partners img{margin-left:8px}
 }@media(min-width:980px){.fullwidth-blue{padding:5vw 0}
+.rightcol{padding-left:2vw}
 .site-footer .widget{width:33.333%;text-align:left}
 }@media(min-width:1300px){.teamfeeds .team.other-info a.wp-element-button{right:7vw}
 }@media screen and (max-width:980px){body{padding-top:70px}

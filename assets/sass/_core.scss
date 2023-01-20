@@ -2584,6 +2584,101 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
 }
 
+.wp-block-group.contactForm {
+  padding: 5vw 20px;
+  background: #cfd2d3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 80px;
+  margin-right: 6vw;
+  @include tab {
+    &:before {
+      content:"";
+      display: block;
+      width: 20%;
+      height: 100%;
+      background: #FFF;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  .leftcol {
+    background: $primary;
+    color: $secondary;
+    padding: 35px;
+    font-family: $font_secondary;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $teal;
+    }
+  }
+  .rightcol {
+    color: $primary;
+  }
+  .gform_wrapper {
+    p:empty{display:none;}
+    input[type="text"], input[type="email"],select, textarea {
+      border: 1px solid rgba(0,0,0,0.8);
+      padding: 7px 5px 6px;
+      background: #FFF;
+      font-family: $font_secondary;
+      font-size: 17px!important;
+      font-weight: 500;
+    }
+    input[type="text"], input[type="email"], select {
+      height: 40px;
+    }
+    .ginput_container {
+      width: 100%;
+      float: left;
+    }
+    .ginput_complex {
+      label {
+        margin-bottom: 0;
+      }
+    }
+    .ginput_container.has_first_name.has_last_name {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        width: 48.5%;
+        margin: 0 0;
+      }
+    }
+    .gform_footer.top_label {
+
+    }
+    label.gfield_label {
+      margin: 0 0;
+    }
+    input#gform_submit_button_1 {
+      display: inline-block;
+      padding: 15px 35px;
+      background: $teal;
+      color: #FFF;
+      border: none;
+    }
+  }
+}
+.rightcol {
+  @include mid {
+    padding-left: 2vw;
+  }
+}
+
 /* FOOTER */
 .site-footer {
   font-family: $font_secondary;
