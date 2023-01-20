@@ -1739,7 +1739,7 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .back-topbar a.back-button:hover span.arrow:before,.back-topbar a.back-button:hover span.arrow:after{left:8px}
 .single-team-page .titlediv{margin:60px 0 50px;text-align:center}
 .single-team-page .titlediv .page-title{font-family:"Josefin Sans",sans-serif;font-size:45px;font-weight:600;line-height:1.2;text-transform:uppercase;color:#bf7b2b;margin:0}
-.single-team-page .titlediv .jobtitle{font-size:25px;font-weight:600;line-height:1.2}
+.single-team-page .titlediv .jobtitle{font-size:22px;font-weight:600;line-height:1.2}
 .single-team-page .entry-content{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;background:#cfd2d3;margin:0 0 80px}
 .single-team-page .entry-content figure{margin:0;position:relative;border-bottom:6px solid #bf7b2b}
 .single-team-page .entry-content figure img{width:100%;height:auto}
