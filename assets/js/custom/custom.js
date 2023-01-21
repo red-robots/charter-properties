@@ -195,11 +195,13 @@ jQuery(document).ready(function ($) {
 
   /* Testimonials */
   var testimonials_swiper = new Swiper("#testimonials-carousel", {
+    initialSlide: 1,
+    centeredSlides: true,
     effect: 'fade', 
     loop: true,
-    speed: 4000,
+    speed: 3000,
     autoplay: {
-      delay: 4000,
+      delay: 8000,
     },
     pagination: {
       el: '.swiper-pagination',
