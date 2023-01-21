@@ -12,7 +12,7 @@ $content = get_field("content404","option");
 get_header(); ?>
 
 <div id="primary" class="content-area default-template page404">
-  <main id="main" class="site-main">
+  <main id="main" class="site-main wrapper">
 
     <header class="entry-title">
       <div class="wrapper">

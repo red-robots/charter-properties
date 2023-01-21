@@ -2785,8 +2785,8 @@ body.page-template-page-sitemap {
   }
 }
 
-
 .sitemap-links {
+  margin-top: 80px;
   ul#sitemap {
     margin: 0 0;
     padding: 0 0;
@@ -2825,8 +2825,32 @@ body.page-template-page-sitemap {
         color: $secondary;
       }
     }
+    ul {
+      list-style: none;
+      margin: 0 0 0 8px;
+      padding: 10px 0 0 10px;
+      border-left: 1px dashed $primary;
+      position: relative;
+      // top: -15px;
+      li:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
+
+.page404 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .small-title {
+    font-family: $font_secondary;
+    color: $secondary;
+  }
+  .sitemap-links {
+    margin-top: 40px;
+  }
+}
+
 
 .narrow-title {
   max-width: 100%;
