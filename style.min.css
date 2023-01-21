@@ -1687,7 +1687,10 @@ body .is-layout-constrained>:where(:not(.alignleft):not(.alignright):not(.alignf
 .wp-block-group.testimonials .testimonial .author .customNav a.next:before,.wp-block-group.testimonials .testimonial .author .customNav a.next:after{right:11px}
 .wp-block-group.testimonials .testimonial .author .customNav a.next:before{-webkit-transform:rotate(37deg);transform:rotate(37deg)}
 .wp-block-group.testimonials .testimonial .author .customNav a.next:after{-webkit-transform:translateY(14px) rotate(-37deg);transform:translateY(14px) rotate(-37deg)}
+.wp-block-group.testimonials .testimonial .author .customNav.found-1 a{display:none !important}
 .wp-block-group.testimonials .testimonial p:empty{display:none}
+.wp-block-group.testimonials #testimonials-static.testimonials-swiper .swiper-slide{height:auto;overflow:visible;visibility:visible}
+.wp-block-group.testimonials #testimonials-static .author .customNav span{-webkit-transform:none;transform:none;margin-top:-5px;opacity:1}
 .wp-block-group.testimonials .owl-dots{display:none}
 .wp-block-group.testimonials .owl-nav{display:none;width:200px;height:70px;color:#fff;position:relative;margin:30px auto 0;background:#073253}
 .wp-block-group.testimonials .owl-nav.show{display:block}

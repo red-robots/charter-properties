@@ -1976,12 +1976,31 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
             
           }
         }
+        &.found-1 {
+          a {display:none!important;}
+        }
       }
     }
     p:empty{
       display: none;
     }
   }
+
+  #testimonials-static {
+    &.testimonials-swiper .swiper-slide {
+      height: auto;
+      overflow: visible;
+      visibility: visible;
+    }
+    .author .customNav  {
+      span {
+        transform: none;
+        margin-top: -5px;
+        opacity: 1;
+      }
+    }
+  }
+
   .owl-dots{
     display: none;
   }

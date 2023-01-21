@@ -177,7 +177,7 @@ jQuery(document).ready(function ($) {
   });
   /* Testimonials */
 
-  var testimonials_swiper = new Swiper(".testimonials-swiper", {
+  var testimonials_swiper = new Swiper("#testimonials-carousel", {
     effect: 'fade',
     loop: true,
     speed: 4000,
