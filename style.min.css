@@ -1804,6 +1804,9 @@ ul.styled li:before{content:"";display:block;width:7px;height:7px;background-ima
 .wp-block-group.join-team{margin-top:50px}
 .wp-block-group.join-team .wp-block-columns{padding-top:80px;padding-bottom:0}
 .wrapper-small{max-width:1000px !important;width:100% !important;margin:0 auto !important;padding-left:15px;padding-right:15px}
+.has-dark-blue-background-color{background-color:#073253 !important}
+.has-orange-background-color{background-color:#bf7b2b !important}
+.has-teal-background-color{background-color:#6aa3a1 !important}
 .has-dark-blue-color{color:#073253 !important}
 .has-orange-color{color:#bf7b2b !important}
 .has-teal-color{color:#6aa3a1 !important}
