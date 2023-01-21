@@ -355,7 +355,7 @@ jQuery(document).ready(function ($) {
   });
 
   if( $('.gform_wrapper [name="gform_unique_id"]').length ) {
-    $('.gform_wrapper [name="gform_unique_id"]').parent().css('display','none');
+    $('.gform_wrapper [name="gform_unique_id"]').parent().addClass('hidden-fields');
   }
 
 }); 

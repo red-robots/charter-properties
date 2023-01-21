@@ -128,6 +128,14 @@ function build_taxonomies() {
       'single'    => 'Community Location',
       'taxonomy'  => 'community-location'
     ),
+    array(
+      'post_type' => array('testimonial'),
+      'menu_name' => 'Testimonial Type',
+      'plural'    => 'Testimonial Types',
+      'single'    => 'Testimonial Type',
+      'taxonomy'  => 'testimonial-types',
+      'default_term' => array('name'=>'Resident','slug'=>'resident')
+    )
   );
 
 
@@ -141,6 +149,7 @@ function build_taxonomies() {
       $rewrite = ( isset($p['rewrite']) && $p['rewrite'] ) ? $p['rewrite'] : $taxonomy;
       $query_var = ( isset($p['query_var']) && $p['query_var'] ) ? $p['query_var'] : true;
       $show_admin_column = ( isset($p['show_admin_column']) ) ? $p['show_admin_column'] : true;
+      $default_term = ( isset($p['default_term']) ) ? $p['default_term'] : '';
 
       $labels = array(
         'name' => _x( $menu_name, 'taxonomy general name' ),
@@ -156,17 +165,34 @@ function build_taxonomies() {
         'new_item_name' => __( 'New ' . $single_name ),
       );
 
-      register_taxonomy($taxonomy, $p_type, array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_admin_column' => $show_admin_column,
-        'query_var' => $query_var,
-        'show_ui' => true,
-        'show_in_rest' => true,
-        'public' => true,
-        '_builtin' => true,
-        'rewrite' => array( 'slug' => $rewrite ),
-      ));
+      if($default_term) {
+
+        register_taxonomy($taxonomy, $p_type, array(
+          'hierarchical' => true,
+          'labels' => $labels,
+          'show_admin_column' => $show_admin_column,
+          'query_var' => $query_var,
+          'show_ui' => true,
+          'show_in_rest' => true,
+          'public' => true,
+          '_builtin' => true,
+          'default_term' => array( 'name' => $default_term['name'], 'slug' => $default_term['slug'] ),
+          'rewrite' => array( 'slug' => $rewrite ),
+        ));
+
+      } else {
+        register_taxonomy($taxonomy, $p_type, array(
+          'hierarchical' => true,
+          'labels' => $labels,
+          'show_admin_column' => $show_admin_column,
+          'query_var' => $query_var,
+          'show_ui' => true,
+          'show_in_rest' => true,
+          'public' => true,
+          '_builtin' => true,
+          'rewrite' => array( 'slug' => $rewrite ),
+        ));
+      }
 
     }
   }
@@ -236,4 +262,8 @@ function custom_post_column( $column, $post_id ) {
     }
     
 }
+
+
+
+
 

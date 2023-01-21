@@ -1,4 +1,5 @@
 <?php
+$category = (isset($a['type']) && $a['type']) ? $a['type'] : '';
 $args = array(
   'posts_per_page'    => 15,
   'post_type'         => 'testimonial',
@@ -6,6 +7,24 @@ $args = array(
   'orderby'           => 'date',
   'order'             => 'DESC'    
 );
+if($category) {
+  $args['tax_query'] = array(
+    array(
+      'taxonomy'  => 'testimonial-types', 
+      'field'   => 'slug',
+      'terms'   => array($category) 
+    )
+  );
+} else {
+  $args['tax_query'] = array(
+    array(
+      'taxonomy'  => 'testimonial-types', 
+      'field'   => 'slug',
+      'terms'   => array('resident') 
+    )
+  );
+}
+
 $entries = new WP_Query($args); 
 if ( $entries->have_posts() ) { ?>
 <div class="wrapper">

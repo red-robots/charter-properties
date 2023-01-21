@@ -802,13 +802,14 @@ function get_communities_listing(WP_REST_Request $request) {
 
 add_shortcode( 'testimonial_feeds', 'testimonial_feeds_shortcode_func' );
 function testimonial_feeds_shortcode_func( $atts ) {
-  // $a = shortcode_atts( array(
-  //   'numcol'=>3
-  // ), $atts );
+  $a = shortcode_atts( array(
+    'type'=>null
+  ), $atts );
   
   $output = '';
   ob_start();
-  get_template_part('parts/testimonial_feeds',null,$a);
+  //get_template_part('parts/testimonial_feeds',true,$a);
+  include( locate_template('parts/testimonial_feeds.php') );
   $output = ob_get_contents();
   ob_end_clean();
   return $output;

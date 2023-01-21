@@ -80,6 +80,43 @@ function bellaworks_setup() {
   ) );
 
   add_theme_support( 'align-wide' );
+
+
+  /* CUSTOM COLORS */
+  // Try to get the current theme default color palette
+  $oldColorPalette = current( (array) get_theme_support( 'editor-color-palette' ) );
+  // Get default core color palette from wp-includes/theme.json
+  if (false === $oldColorPalette && class_exists('WP_Theme_JSON_Resolver')) {
+      $settings = WP_Theme_JSON_Resolver::get_core_data()->get_settings();
+      if (isset($settings['color']['palette']['default'])) {
+          $oldColorPalette = $settings['color']['palette']['default']; // there is no need to apply translations to color names - they are translated already
+      }
+  }
+  // The new colors we are going to add
+  $newColorPalette = [
+      [
+          'name' => esc_attr__('Orange', 'bellaworks'),
+          'slug' => 'orange',
+          'color' => '#BF7B2B',
+      ],
+      [
+          'name' => esc_attr__('Dark Blue', 'bellaworks'),
+          'slug' => 'dark_blue',
+          'color' => '#073253',
+      ],
+      [
+          'name' => esc_attr__('Teal', 'bellaworks'),
+          'slug' => 'teal',
+          'color' => '#6AA3A1',
+      ],
+  ];
+  // Merge the old and new color palettes
+  if (!empty($oldColorPalette)) {
+      $newColorPalette = array_merge($oldColorPalette, $newColorPalette);
+  }
+  // Apply the color palette containing the original colors and 2 new colors:
+  add_theme_support( 'editor-color-palette', $newColorPalette);
+
 }
 endif;
 add_action( 'after_setup_theme', 'bellaworks_setup' );
