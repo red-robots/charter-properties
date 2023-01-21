@@ -326,4 +326,8 @@ jQuery(document).ready(function ($) {
     $('.tabs .tab').removeClass('active');
     $('.tabs .tab a[data-tab="' + tab + '"]').parent().addClass('active');
   });
+
+  if ($('.gform_wrapper [name="gform_unique_id"]').length) {
+    $('.gform_wrapper [name="gform_unique_id"]').parent().css('display', 'none');
+  }
 });

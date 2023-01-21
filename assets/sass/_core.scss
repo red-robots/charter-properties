@@ -127,13 +127,16 @@ body.our-communities {
   @include flexgroup();
 }
 .wrapper {
-	max-width: 90%;
+	max-width: 98%;
 	width: 100%;
 	margin: 0 auto;
 	padding-left: 20px;
 	padding-right: 20px;
 	position: relative;
 	z-index: 10;
+  @include tab {
+    max-width: 90%;
+  }
   @include xs {
     max-width: 85%;
   }
@@ -156,8 +159,11 @@ body.our-communities {
   }
 
   .wrapper {
-    max-width: 90%;
+    max-width: 95%;
     width: 100%;
+    @include tab {
+      max-width: 90%;
+    }
   }
 
   .site-logo {
@@ -448,7 +454,10 @@ html  body.logged-in.admin-bar {
     position: relative;
     padding: 0 0;
     height: 100%;
-    max-width: $wrapper;
+    max-width: 100%;
+    @include tab {
+      max-width: $wrapper;
+    }
   }
   .banner-image {
     width: 100%;
@@ -1842,11 +1851,14 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
 }
 
 .wp-block-group.alignwide {
-  max-width: 90%;
+  max-width: 98%;
   width: 100%;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+  @include tab {
+    max-width: 90%;
+  }
 }
 .wp-block-group.testimonials {
   padding: 50px 0;
@@ -2585,7 +2597,7 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
 }
 
 .wp-block-group.contactForm {
-  padding: 5vw 20px;
+  padding: 0 20px 45px;
   background: #cfd2d3;
   display: flex;
   flex-wrap: wrap;
@@ -2593,8 +2605,9 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   justify-content: center;
   position: relative;
   margin-bottom: 80px;
-  margin-right: 6vw;
   @include tab {
+    padding: 5vw 20px 45px;
+    margin-right: 6vw;
     &:before {
       content:"";
       display: block;
@@ -2607,9 +2620,8 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     }
   }
   .leftcol {
-    background: $primary;
-    color: $secondary;
-    padding: 35px;
+    color: #FFF;
+    padding: 0;
     font-family: $font_secondary;
     font-weight: 500;
     display: flex;
@@ -2617,10 +2629,39 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     align-items: center;
     position: relative;
     z-index: 20;
+    margin:0 -20px;
+    @include tab {
+      margin: 0 0;
+    }
     a {
       display: inline-block;
       text-decoration: none;
       color: $teal;
+    }
+    .is-layout-constrained.wp-block-group {
+      background: $primary;
+      padding: 35px;
+      min-height: 0;
+      position: relative;
+      top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 5px solid $secondary;
+      width: 100%!important;
+      .wp-block-group__inner-container {
+        max-width: 100%!important;
+        width: 100%!important;
+        margin: 0 0!important;
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+      @include tab {
+        top: -36px;
+        min-height: 25em;
+      }
     }
   }
   .rightcol {
@@ -2628,15 +2669,17 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
   .gform_wrapper {
     p:empty{display:none;}
+    input[type="tel"], 
     input[type="text"], input[type="email"],select, textarea {
       border: 1px solid rgba(0,0,0,0.8);
-      padding: 7px 5px 6px;
+      padding: 7px 10px 6px;
       background: #FFF;
       font-family: $font_secondary;
       font-size: 17px!important;
       font-weight: 500;
+      line-height: 1.2;
     }
-    input[type="text"], input[type="email"], select {
+    input[type="text"], input[type="email"], input[type="tel"], select {
       height: 40px;
     }
     .ginput_container {
@@ -2658,9 +2701,6 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
         margin: 0 0;
       }
     }
-    .gform_footer.top_label {
-
-    }
     label.gfield_label {
       margin: 0 0;
     }
@@ -2670,12 +2710,25 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       background: $teal;
       color: #FFF;
       border: none;
+      &:hover {
+        background: $secondary;
+      }
+    }
+    .gform_footer {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 0!important;
+      padding-bottom: 0!important;
+      input.gform_button {
+        margin: 0 0;
+      }
     }
   }
 }
 .rightcol {
   @include mid {
-    padding-left: 2vw;
+    padding-left: 1vw;
+    padding-right: 1.5vw;
   }
 }
 
