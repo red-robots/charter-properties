@@ -1617,7 +1617,9 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   .owl-item {
     margin:0 0!important;
     padding: 15px 0 20px;
+    min-width: 320px;
     @include tab {
+      min-width: unset;
       padding: 20px;
     }
   }
@@ -1913,6 +1915,8 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       &.swiper-slide-active {
         height: auto;
         visibility: visible;
+        z-index: 100;
+        position: relative;
         .inner {
           @include animateEffect(fadeIn);
         }
@@ -1920,6 +1924,8 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
           opacity: 1;
           margin-top: 0;
         }
+
+
       }
     }
   }
