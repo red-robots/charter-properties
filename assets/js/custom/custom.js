@@ -201,7 +201,7 @@ jQuery(document).ready(function ($) {
     loop: true,
     speed: 3000,
     autoplay: {
-      delay: 8000,
+      delay: 5000,
     },
     pagination: {
       el: '.swiper-pagination',
@@ -358,6 +358,10 @@ jQuery(document).ready(function ($) {
 
   if( $('.gform_wrapper [name="gform_unique_id"]').length ) {
     $('.gform_wrapper [name="gform_unique_id"]').parent().addClass('hidden-fields');
+  }
+
+  if( $('.title-with-button').next('.wp-element-button').length ) {
+    $('.title-with-button').next('.wp-element-button').appendTo('.title-with-button');
   }
 
 }); 

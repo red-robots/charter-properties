@@ -25,16 +25,7 @@ if ( $team->have_posts() ) { ?>
 			?>
 			<div class="team <?php echo ($photo) ? 'hasphoto':'nophoto'; ?>">
         <div class="inner">
-          <a href="<?php echo get_the_permalink() ?>">
-            <figure<?php echo $stylePhoto ?>>
-              <img src="<?php echo get_stylesheet_directory_uri() ?>/images/portrait.png" alt="">
-            </figure>
-            <div class="info">
-              <h4><?php echo get_the_title() ?></h4>
-              <?php if ($jobtitle) { ?><div class="jobtitle"><?php echo $jobtitle ?></div><?php } ?>
-            </div>
-            <span class="slideBtn">Learn More</span>
-          </a>
+          <a href="<?php echo get_the_permalink() ?>"> <figure<?php echo $stylePhoto ?>> <img src="<?php echo get_stylesheet_directory_uri() ?>/images/portrait.png" alt=""> </figure> <div class="info"> <h4><?php echo get_the_title() ?></h4> <?php if ($jobtitle) { ?><div class="jobtitle"><?php echo $jobtitle ?></div><?php } ?> </div> <div class="slideBtn">Learn More</div> </a>
         </div>
       </div>
 			<?php endwhile; wp_reset_postdata(); ?>

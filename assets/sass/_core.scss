@@ -121,7 +121,7 @@ a {
   overflow-y: auto;
 }
 body.our-communities {
-  #page {margin:0 -15px;}
+  // #page {margin:0 -15px;}
 }
 .flexwrap {
   @include flexgroup();
@@ -479,6 +479,10 @@ html  body.logged-in.admin-bar {
     @include flexgroup();
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    @include tab {
+      padding: 0 0;
+    }
     &:before {
       content:"";
       display: block;
@@ -494,13 +498,16 @@ html  body.logged-in.admin-bar {
       // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13567a', endColorstr='#991d4254',GradientType=0 );
     }
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       text-transform: uppercase;
       line-height: 1.2;
       color: #FFF;
       position: relative;
       z-index: 10;
+      @include tab {
+        font-size: 2.5rem;
+      }
     }
   }
   img {
@@ -1403,11 +1410,15 @@ body.home {
     }
   }
   .blocks-wrapper {
-    max-width: 90%;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 0;
     overflow: hidden;
+    @include tab {
+      max-width: 90%;
+      padding: 0 20px;
+    }
   }
   .block {
     padding: 60px 0 75px;
@@ -1581,10 +1592,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     background: $teal;
     position: absolute;
     top: 0;
-    left: -5px;
+    left: -20px;
     @include tab {
       width: 80vw;
-      left: 0;
+      left: -30px;
     }
   }
   #carousel-communities {
@@ -1605,7 +1616,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
   .owl-item {
     margin:0 0!important;
-    padding: 20px;
+    padding: 15px 0 20px;
+    @include tab {
+      padding: 20px;
+    }
   }
   .item {
     text-align: center;
@@ -1810,7 +1824,7 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     justify-content: flex-start;
   }
   span {
-    display: inline-block;
+    display: block;
     text-transform: uppercase;
     font-family: $font_secondary;
     font-size: 15px;
@@ -1818,24 +1832,31 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     line-height: 1.2;
     text-transform: uppercase;
     position: relative;
-    padding-left: 13px;
-    margin-left: 13px;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
     @include tab {
+      width: auto;
+      text-align: left;
+      display: inline-block;
+      padding-left: 13px;
+      margin-left: 13px;
       margin-top: 0;
       margin-bottom: 0;
+
+      &:before {
+        content:"";
+        display: block;
+        width: 2px;
+        height: 88%;
+        background: #FFF;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
-    &:before {
-      content:"";
-      display: block;
-      width: 2px;
-      height: 88%;
-      background: #FFF;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+    
     strong {
       color: $primary;
       font-weight: 600;
@@ -1872,7 +1893,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 0;
+    @include tab {
+      padding: 0 20px;
+    }
     .swiper-slide {
       height: 0;
       overflow: hidden;
@@ -2032,8 +2056,15 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   @include max($tabwidth) {
     max-width: 100%!important;
     width: 100%!important;
+    .wp-block-group__inner-container {
+      padding-left: 20px;
+      padding-right: 20px;
+      h2, h2.has-large-font-size {
+        font-size: 2rem!important;
+      }
+    }
     .testimonials-swiper {
-      max-width: 85vw!important;
+      max-width: 100%!important;
       width: 100%!important;
     }
     .swiper-slide {
@@ -2047,6 +2078,12 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   &.wrapper {
     padding-top: 40px;
     padding-bottom: 80px;
+    padding-left: 5px;
+    padding-right: 5px;
+    @include tab {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
   h2.has-text-align-center  {
     width: 100%;
@@ -2055,8 +2092,8 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   }
   .flexwrap {
     @include flexgroup();
-    margin-left: -20px;
-    margin-right: -20px;
+    margin-left: -15px;
+    margin-right: -15px;
   }
   .team {
     padding: 0;
@@ -2145,6 +2182,12 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
         a {
           color: $gray2;
         }
+        &#ctaBoxTeam {
+          margin-top: 20px;
+          @include tab {
+            margin-top: 0;
+          }
+        }
       }
       a {
         display: block;
@@ -2197,8 +2240,11 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       padding: 0 0;
       @include tab {
         padding: 15px 15px 10px;
+        font-size: 4.2vw!important;
+        display: inline-block;
+      }
+      @include mid {
         font-size: 5vw!important;
-        display: inline;
       }
       @include max($tabwidth - 1px) {
         font-size: 2rem!important;
@@ -2213,10 +2259,12 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
 
   .team {
     width: 100%;
+    padding: 10px;
     @include xs {
       width: 50%;
     }
     @include tab {
+      padding: 15px;
       width: 33.333%;
     }
   }
@@ -2264,7 +2312,7 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     height: 40px;
     position: absolute;
     right: 0;
-    bottom: 30px;
+    bottom: 0;
     z-index: 15;
     background: $secondary;
     color: transparent;
@@ -2314,6 +2362,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     line-height: 1.2;
     padding: 20px 15px 18px 25px;
     position: relative;
+    left: 38px;
+    @include tab {
+      left: 0;
+    }
     span.arrow {
       width: 50px;
       height: 50px;
@@ -2624,7 +2676,14 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   justify-content: center;
   position: relative;
   margin-bottom: 80px;
+  max-width: 100%;
+  width: 100%;
+  &.alignwide {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+  }
   @include tab {
+    max-width: 98%;
     padding: 5vw 20px 45px;
     margin-right: 6vw;
     &:before {
@@ -2648,9 +2707,15 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     align-items: center;
     position: relative;
     z-index: 20;
-    margin:0 -20px;
+    margin:-20px 0 0;
     @include tab {
       margin: 0 0;
+    }
+    p {
+      font-size: 18px;
+      @include tab {
+        font-size: 20px;
+      }
     }
     a {
       display: inline-block;
@@ -2659,7 +2724,6 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
     }
     .is-layout-constrained.wp-block-group {
       background: $primary;
-      padding: 35px;
       min-height: 0;
       position: relative;
       top: 0;
@@ -2669,6 +2733,10 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
       justify-content: center;
       border-bottom: 5px solid $secondary;
       width: 100%!important;
+      padding: 15px;
+      @include tab {
+        padding: 35px;
+      }
       .wp-block-group__inner-container {
         max-width: 100%!important;
         width: 100%!important;
@@ -2686,6 +2754,15 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
   .rightcol {
     color: $primary;
     margin-bottom: 0!important;
+  }
+  .wp-block-columns.rightcol {
+    padding:  0 0;
+  }
+  .wp-block-column.leftcol {
+    left: 0;
+    @include tab {
+      left: -15px;
+    }
   }
   .gform_wrapper {
     p:empty{display:none;}
@@ -2889,7 +2966,7 @@ body.page-template-page-sitemap {
       border-bottom: 25px solid #FFF;
       position: absolute;
       left: 50%;
-      bottom: 0;
+      bottom: -4px;
       transform: translateX(-50%);
       z-index: 4;
     }
@@ -3172,4 +3249,13 @@ ul.styled {
   }
 }
 
-
+@include max($tabwidth - 1px) {
+  body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: 100%!important;
+  }
+  .wp-block-group__inner-container .wrapper.medium {
+    display: block!important;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}
