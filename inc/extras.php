@@ -830,3 +830,10 @@ function team_feeds_shortcode_func( $atts ) {
   return $output;
 }
 
+
+function extractYoutubeId($link) {
+  if(empty($link)) return '';
+  preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $link, $matches);
+  return (isset($matches[0]) && $matches[0]) ? $matches[0] : '';
+}
+

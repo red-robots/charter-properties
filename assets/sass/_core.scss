@@ -169,6 +169,10 @@ body.our-communities {
   .site-logo {
     display: inline-block;
     width: 175px;
+    position: relative;
+    @include tab {
+      left: -2px;
+    }
     * {
       display: block;
       width: 100%;
@@ -388,10 +392,14 @@ html  body.logged-in.admin-bar {
 .banner-wrapper {
   position: relative;
   z-index: 20;
+  // padding-left: 20px;
+  // padding-right: 20px;
   .wrapper {
     max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
     @include tab {
-      max-width: $wrapper;
+      max-width: 90%;
     }
   }
   .banner {
@@ -535,6 +543,123 @@ html  body.logged-in.admin-bar {
     }
   }
 }
+
+.video-outer-wrap {
+  width: 100%;
+  position: relative;
+  height: 80vh;
+  z-index: 30;
+  height: 75vh;
+}
+
+.video-wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin:0 auto 50px;
+  position: relative;
+  @include tab {
+    max-width: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.video-frame {
+  width: 100%;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  img {
+    width: auto;
+    height: 100%;
+    transform: scale(1.3);
+    position: relative;
+    z-index: 5;
+    @include tab {
+      width: 100%;
+      height: auto;
+    }
+  }
+  iframe {
+    display: block;
+    width: 100vh;
+    height: 100%;
+    border: none;
+    margin: 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transform: translateX(-25%) scale(1.6);
+    @include desk {
+      width: 100%;
+      height: 100%;
+      transform: scale(1.8);
+    }
+    @include xxl {
+      transform: scale(1.3);
+    }
+    @media screen and (max-device-width:960px) {
+      visibility: hidden;
+    }
+  }
+  // .video-cover {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: 10;
+  // }
+  .video-caption {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    background: rgba(0,0,0,.6);
+    color: #FFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw 7vw;
+    @include tab {
+      padding: 5vw;
+    }
+    .inner {
+      font-family: $font_secondary;
+      font-weight: 600;
+      font-size: 3.5vh;
+      line-height: 1.1;
+      text-align: center;
+      text-transform: uppercase;
+      max-width: 800px;
+      width: 100%;
+      @include tab {
+        font-size: 7vh;
+      }
+    }
+  }
+  .mobile-hero {
+    display: none;
+    @media screen and (max-device-width:960px) {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+.video-wrapper, .video-frame {
+  height: 100%;
+}
 #main,
 .titlediv.wrapper {
   @include max($midwidth) {
@@ -546,7 +671,8 @@ html  body.logged-in.admin-bar {
 body.home {
   #content {
     #intro {
-      margin-top: -70px;
+      // margin-top: -70px;
+      margin-top: -10vh;
     }
   }
 }
@@ -767,9 +893,15 @@ body.home {
       left: 0;
       bottom: 0;
       overflow: hidden;
+      @include tab {
+        bottom: 0;
+      }
       @include max($midwidth) {
         position: relative;
       }
+    }
+    @include max($midwidth) {
+      min-height: 45em;
     }
   }
   p:empty{display:none;}
@@ -905,6 +1037,10 @@ body.home {
         padding: 10px 50px 10px 30px;
         position: relative;
         // background: tint($primary,1);
+        width: 100%;
+        @include xs {
+          width: auto;
+        }
         &:before {
           content:"";
           display: block;
@@ -988,7 +1124,9 @@ body.home {
     width: 50px;
     height: 100%;
     position: relative;
-    margin-left: 1px;
+    @include tab {
+      margin-left: 1px;
+    }
     span {
       display: block;
       width: 0;
@@ -1012,7 +1150,7 @@ body.home {
       transform: rotate(-45deg);
     }
     &.disabled {
-      opacity: 0.5;
+      opacity: 0.3;
       cursor: not-allowed;
     }
   }
