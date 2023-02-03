@@ -597,9 +597,9 @@ html  body.logged-in.admin-bar {
     @include xxl {
       transform: scale(1.2);
     }
-    @media screen and (max-device-width:960px) {
-      visibility: hidden;
-    }
+    // @media screen and (max-device-width:960px) {
+    //   visibility: hidden;
+    // }
   }
   // .video-cover {
   //   width: 100%;
@@ -623,6 +623,8 @@ html  body.logged-in.admin-bar {
     align-items: center;
     justify-content: center;
     padding: 5vw 7vw;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
     @include tab {
       padding: 5vw;
     }
@@ -640,6 +642,41 @@ html  body.logged-in.admin-bar {
       }
     }
   }
+
+  .video-logo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateY(-4vh);
+    span {
+      display: inline-block;
+      width: 30vw;
+      opacity: 0;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      background: rgba(255,255,255,.8);
+      padding: 15px;
+    }
+    &.reveal {
+      z-index: 18;
+      span {
+        opacity: 1;
+        @include animateThis(1s);
+        @include animateEffect(fadeInUp);
+      }
+    }
+  }
+
   .mobile-hero {
     display: none;
     @media screen and (max-device-width:960px) {
@@ -2356,9 +2393,11 @@ body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alig
         }
         @include tab {
           right: 5vw;
+          left: -1vw;
         }
         @include xxl {
           right: 7vw;
+          left: -5vw;
         }
         &:hover {
           background: $secondary;

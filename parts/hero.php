@@ -47,6 +47,10 @@
       if($video_thumbnail) {
         $thumbnail = $video_thumbnail['url'];
       }
+
+      $custom_logo_id = get_theme_mod( 'custom_logo' );
+      $logoImg = ($custom_logo_id) ? wp_get_attachment_image_src($custom_logo_id,'large') : '';
+
       ?>
       <div class="video-outer-wrap">
         <div class="video-wrapper">
@@ -54,16 +58,68 @@
             <!-- <div class="video-cover"></div> -->
             <div class="mobile-hero" style="background-image:url('<?php echo $thumbnail ?>')"></div>
             <img src="<?php echo $thumbnail ?>" alt="" class="thumbnail">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtubeId ?>?controls=0&autoplay=1&mute=1&rel=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            <div id="player"></div>
+            <!-- <iframe id="home-intro-view" width="560" height="315" src="https://www.youtube.com/embed/<?php //echo $youtubeId ?>?controls=0&autoplay=1&mute=1&rel=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe> -->
             <?php if ($caption) { ?>
-            <div class="video-caption">
+            <div id="video-caption" class="video-caption">
               <div class="inner animated fadeInUp"><?php echo $caption ?></div>
             </div>  
+            <?php } ?>
+            <?php if ( $logoImg ) { ?>
+            <div id="video-logo" class="video-logo">
+              <span><img src="<?php echo $logoImg[0] ?>" alt="<?php echo get_bloginfo('name') ?>"></span>
+            </div>
             <?php } ?>
           </div>
         </div>
         <div class="scrolldown"><a href="#intro" id="scrolldown" class="fadeInDown wow"><span>Scroll Down</span></a></div>
       </div>
+      <script src="https://www.youtube.com/iframe_api"></script>
+      <script>
+        var player;
+        function onYouTubePlayerAPIReady() {
+            player = new YT.Player('player', {
+              height: '390',
+              width: '640',
+              videoId: '<?php echo $youtubeId ?>',
+              playerVars: {
+                autoplay: 1,
+                loop: 1,
+                mute:1,
+                rel:0,
+                controls: 0,
+                showinfo: 0
+              },
+              events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+              }
+            });
+        }
+
+        // autoplay video
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            setTimeout(fadeOutText, 950);
+        }
+
+        // when video ends
+        function onPlayerStateChange(event) {        
+            if(event.data === 0) {            
+              setTimeout(revealLogo, 900);
+            }
+        }
+
+        function revealLogo() {
+          document.getElementById('video-logo').classList.add("reveal");
+        }
+
+        function fadeOutText() {
+          var playerId = document.getElementById('video-caption');
+          playerId.classList.add("animated");
+          playerId.classList.add("fadeOut");
+        }
+    </script>
 
     <?php } ?>
 

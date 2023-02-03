@@ -7,6 +7,19 @@
 
 jQuery(document).ready(function ($) {
 
+  /* FadeOut Text on Homepage Video */
+  // window.onload = fadeOutVideoText();
+  // function fadeOutVideoText() {
+  //   if( $('.video-frame .video-caption').length ) {
+  //     setTimeout(function(){
+  //       $('.video-frame .video-caption').addClass('animated fadeOut');
+  //     },1500);
+  //   }
+  // }
+
+
+
+
   /* MENU TOGGLE */
   $('#menu-toggle').on('click',function(e){
     e.preventDefault();
