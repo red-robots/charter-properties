@@ -588,6 +588,7 @@ html  body.logged-in.admin-bar {
     top: 0;
     left: 0;
     z-index: 10;
+    background-color: #000;
     transform: translateX(-25%) scale(1.6);
     @include desk {
       width: 100%;

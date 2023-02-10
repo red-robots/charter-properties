@@ -40,30 +40,28 @@
     <?php } ?>
   <?php } else { ?>
 
-    <?php 
+    <?php if ( $youtubeId = extractYoutubeId( get_field('youtube_url') ) ) { 
+      $thumbnail = "https://i3.ytimg.com/vi/".$youtubeId."/maxresdefault.jpg";
+      $caption = get_field('video_caption');
+      $video_thumbnail = get_field('video_thumbnail');
+      if($video_thumbnail) {
+        $thumbnail = $video_thumbnail['url'];
+      }
 
       $custom_logo_id = get_theme_mod( 'custom_logo' );
       $logoImg = ($custom_logo_id) ? wp_get_attachment_image_src($custom_logo_id,'large') : '';
-      $videoLink = get_field('youtube_url');
-      $caption = get_field('video_caption');
-      $video_thumbnail = get_field('video_thumbnail');
-      $thumbnail = ($video_thumbnail) ? $video_thumbnail['url'] : '';
 
-      /* YOUTUBE */
-      if ( $youtubeId = extractYoutubeId( $videoLink ) ) { 
-        $thumbnail = "https://i3.ytimg.com/vi/".$youtubeId."/maxresdefault.jpg";
-        if($video_thumbnail) {
-          $thumbnail = $video_thumbnail['url'];
-        } 
-        ?>
+      ?>
       <div class="video-outer-wrap">
         <div class="video-wrapper">
           <div class="video-frame">
+            <!-- <div class="video-cover"></div> -->
             <div class="mobile-hero" style="background-image:url('<?php echo $thumbnail ?>')"></div>
             <img src="<?php echo $thumbnail ?>" alt="" class="thumbnail">
             <div id="player"></div>
+            <!-- <iframe id="home-intro-view" width="560" height="315" src="https://www.youtube.com/embed/<?php //echo $youtubeId ?>?controls=0&autoplay=1&mute=1&rel=0" title="YouTube video player" frameborder="0" allowfullscreen></iframe> -->
             <?php if ($caption) { ?>
-            <div id="video-caption" class="video-caption animated">
+            <div id="video-caption" class="video-caption">
               <div class="inner animated fadeInUp"><?php echo $caption ?></div>
             </div>  
             <?php } ?>
@@ -111,84 +109,21 @@
               setTimeout(revealLogo, 900);
             }
         }
+
         function revealLogo() {
           document.getElementById('video-logo').classList.add("reveal");
         }
+
         function fadeOutText() {
           var playerId = document.getElementById('video-caption');
           playerId.classList.add("animated");
           playerId.classList.add("fadeOut");
         }
-      </script>
-
-    <?php } else { ?>
-
-      <?php if ($videoLink &&  (strpos($videoLink, 'vimeo.com') !== false) ) { 
-        $vimeoID = (int) substr(parse_url($videoLink, PHP_URL_PATH), 1);
-        ?>
-        <div id="vimeoVIDEO" class="video-outer-wrap">
-          <div class="video-wrapper">
-            <div class="video-frame">
-              <?php if ($thumbnail) { ?>
-              <div class="mobile-hero" style="background-image:url('<?php echo $thumbnail ?>')"></div>
-              <img src="<?php echo $thumbnail ?>" alt="" class="thumbnail">
-              <?php } ?>
-              <div id="player">
-                <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/<?php echo $vimeoID ?>?h=09ea2b7748&autoplay=1&loop=0&muted=1&sidedock=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              </div>
-              <?php if ($caption) { ?>
-              <div id="video-caption" class="video-caption">
-                <div id="video-hero-text" class="inner animated fadeInUp"><?php echo $caption ?></div>
-              </div>  
-              <?php } ?>
-              <?php if ( $logoImg ) { ?>
-              <div id="video-logo" class="video-logo">
-                <span><img src="<?php echo $logoImg[0] ?>" alt="<?php echo get_bloginfo('name') ?>"></span>
-              </div>
-              <?php } ?>
-            </div>
-          </div>
-          <div class="scrolldown"><a href="#intro" id="scrolldown" class="fadeInDown wow"><span>Scroll Down</span></a></div>
-        </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
-        <script>
-          var iframe = document.querySelector('#vimeo-iframe');
-          var player = new Vimeo.Player(iframe);
-
-          player.on('play', function() {
-            //iframe.src = "https://player.vimeo.com/video/<?php echo $vimeoID ?>?h=09ea2b7748&autoplay=1&loop=0&muted=1&sidedock=0";
-            <?php if ($caption) { ?>
-              videoCaption = document.getElementById('video-hero-text');
-              setTimeout(function(){
-                videoCaption.classList.remove('fadeInUp');
-                videoCaption.classList.add('fadeOut');
-              },1500);
-            <?php } ?>
-          });
-
-          player.on('ended', function() {
-            //document.getElementById('video-logo').classList.add("reveal");
-            setTimeout(function(){
-              iframe.src = "https://player.vimeo.com/video/<?php echo $vimeoID ?>?h=09ea2b7748&autoplay=1&loop=1&muted=1&sidedock=0";
-              <?php if ($caption) { ?>
-                videoCaption.classList.remove('fadeOut');
-                videoCaption.classList.add('fadeInUp');
-              <?php } ?>
-            },100);
-            setTimeout(function(){
-              videoCaption.classList.remove('fadeInUp');
-              videoCaption.classList.add('fadeOut');
-            },3800);
-          });
-
-          
-      </script>
-      <?php } ?>
+    </script>
 
     <?php } ?>
 
   <?php } ?>
-
 
 <?php } else { ?>
 
